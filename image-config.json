@@ -1,0 +1,79 @@
+{
+  "imagePaths": {
+    "featuredDestinations": [
+      {
+        "name": "Karakoram Mountains",
+        "path": "image/201/Karakoram Mountains.jpg",
+        "fallback": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+      },
+      {
+        "name": "Hunza Valley",
+        "path": "image/201/Hunza Valley.jpg",
+        "fallback": "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+      },
+      {
+        "name": "Badshahi Mosque",
+        "path": "image/201/Badshahi Mosque.jpg",
+        "fallback": "https://images.unsplash.com/photo-1563752689422-827e0d1bc9a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+      },
+      {
+        "name": "Mohatta Palace",
+        "path": "image/201/Mohatta Palace.jpg",
+        "fallback": "https://images.unsplash.com/photo-1589652717521-380b767b6b5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+      },
+      {
+        "name": "Lahore Fort",
+        "path": "image/201/Lahore Fort.jpg",
+        "fallback": "https://images.unsplash.com/photo-1563752689422-827e0d1bc9a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+      },
+      {
+        "name": "Mohenjo-daro",
+        "path": "image/201/Mohenjo-daro.jpg",
+        "fallback": "https://images.unsplash.com/photo-1589652717521-380b767b6b5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+      }
+    ],
+    "countrySection": {
+      "mainImage": {
+        "path": "image/My Country - Pakistan/123.jpg",
+        "fallback": "https://images.unsplash.com/photo-1546182862-81c7-79d5fa3c5c83?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
+      }
+    },
+    "cityImages": {
+      "karachi": "image/karachi.jpg",
+      "lahore": "image/Lahore.png",
+      "islamabad": "image/Islamabad.webp",
+      "peshawar": "image/Peshawar.jpg",
+      "quetta": "image/Quetta.jpg",
+      "multan": "image/Multan.jpg",
+      "faisalabad": "image/Faisalabad.jpg",
+      "rawalpindi": "image/Rawalpindi.jpg",
+      "sialkot": "image/Sialkot.jpg",
+      "gujranwala": "image/Gujranwala.jpg",
+      "bahawalpur": "image/Bahawalpur.jpg",
+      "sukkur": "image/Sukkur.jpg",
+      "muzaffarabad": "image/Muzaffarabad.jpg",
+      "skardu": "image/Skardu.jpg",
+      "gilgit": "image/Gilgit.jpg",
+      "swat": "image/Swat.jpg",
+      "chitral": "image/Chitral.jpg",
+      "abbottabad": "image/Abbottabad.jpg",
+      "gwadar": "image/Gwadar.jpg",
+      "hub": "image/Hub.jpg",
+      "turbat": "image/Turbat.jpg",
+      "khuzdar": "image/Khuzdar.jpg",
+      "kohat": "image/Kohat.jpg",
+      "mardan": "image/Mardan.png",
+      "mirpur": "image/Mirpur.jpg",
+      "jhang": "image/Jhang.jpg",
+      "sahiwal": "image/Sahiwal.jpg",
+      "sargodha": "image/Sargodha.jpg",
+      "sheikhupura": "image/Sheikhupura.jpg",
+      "larkana": "image/Larkana.jpg",
+      "nawabshah": "image/Nawabshah.jpg",
+      "chiniot": "image/Chiniot.jpg",
+      "kasur": "image/Kasur.jpg",
+      "rahim_yar_khan": "image/Rahim Yar Khan.jpg",
+      "sadiqabad": "image/Sadiqabad.jpg"
+    }
+  }
+}

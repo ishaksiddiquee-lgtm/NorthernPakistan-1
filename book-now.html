@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Trip | Pakistan Tourism</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2><a href="index.html">Northern<span>Pakistan</span></a></h2>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.html#destinations" class="nav-link">Destinations</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="book-now.html" class="nav-link btn-primary active">Book Now</a>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+        <div class="hero-content">
+            <h1>Book Your Dream Trip</h1>
+            <p>Plan your adventure to Pakistan's most beautiful destinations</p>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking">
+        <div class="container">
+            <h2>Plan Your Journey</h2>
+            <p class="section-subtitle">Customize your trip to Pakistan's northern areas</p>
+            
+            <div class="booking-content">
+                <div class="booking-form-container">
+                    <form class="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                <select id="destination" required>
+                                    <option value="">Select a Destination</option>
+                                    <option value="swat">Swat Valley</option>
+                                    <option value="hunza">Hunza Valley</option>
+                                    <option value="murree">Murree</option>
+                                    <option value="skardu">Skardu</option>
+                                    <option value="lahore">Lahore</option>
+                                    <option value="islamabad">Islamabad</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="travelers">Number of Travelers</label>
+                                <select id="travelers" required>
+                                    <option value="1">1 Person</option>
+                                    <option value="2" selected>2 People</option>
+                                    <option value="3">3 People</option>
+                                    <option value="4">4 People</option>
+                                    <option value="5">5+ People</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkin">Check-in Date</label>
+                                <input type="date" id="checkin" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="checkout">Check-out Date</label>
+                                <input type="date" id="checkout" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="budget">Budget Range</label>
+                                <select id="budget" required>
+                                    <option value="">Select Budget</option>
+                                    <option value="economy">Economy (PKR 10,000 - 25,000)</option>
+                                    <option value="standard">Standard (PKR 25,000 - 50,000)</option>
+                                    <option value="premium">Premium (PKR 50,000 - 100,000)</option>
+                                    <option value="luxury">Luxury (PKR 100,000+)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="category">Trip Category</label>
+                                <select id="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="adventure">Adventure</option>
+                                    <option value="nature">Nature & Wildlife</option>
+                                    <option value="culture">Culture & History</option>
+                                    <option value="spiritual">Spiritual & Religious</option>
+                                    <option value="family">Family Tour</option>
+                                    <option value="honeymoon">Honeymoon</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="special-request">Special Requests</label>
+                            <textarea id="special-request" rows="4" placeholder="Tell us about any special requirements or preferences..."></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="Enter your email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Submit Booking Request</button>
+                    </form>
+                </div>
+                
+                <div class="booking-info">
+                    <h3>Why Book With Us?</h3>
+                    <ul class="info-list">
+                        <li><i class="fas fa-check-circle"></i> Local experts with deep destination knowledge</li>
+                        <li><i class="fas fa-check-circle"></i> Flexible customization options</li>
+                        <li><i class="fas fa-check-circle"></i> Best price guarantee</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 customer support</li>
+                        <li><i class="fas fa-check-circle"></i> Verified local guides</li>
+                        <li><i class="fas fa-check-circle"></i> Safe and secure travel</li>
+                    </ul>
+                    
+                    <div class="booking-tips">
+                        <h3>Travel Tips</h3>
+                        <p><strong>Best Time to Visit:</strong> April to October for most destinations</p>
+                        <p><strong>What to Pack:</strong> Comfortable walking shoes, weather-appropriate clothing, camera</p>
+                        <p><strong>Health:</strong> Carry necessary medications and stay hydrated</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Packages Section -->
+    <section class="destinations">
+        <div class="container">
+            <h2>Popular Tour Packages</h2>
+            <p class="section-subtitle">Handpicked experiences for your perfect trip</p>
+            
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1590651552505-01b35f4e5b5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Swat Discovery">
+                        <div class="overlay">
+                            <h3>Swat Discovery</h3>
+                            <p>5 Days / 4 Nights</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hunza Explorer">
+                        <div class="overlay">
+                            <h3>Hunza Explorer</h3>
+                            <p>7 Days / 6 Nights</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Murree Getaway">
+                        <div class="overlay">
+                            <h3>Murree Getaway</h3>
+                            <p>3 Days / 2 Nights</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1614315154362-e470bf108d54?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Skardu Adventure">
+                        <div class="overlay">
+                            <h3>Skardu Adventure</h3>
+                            <p>8 Days / 7 Nights</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NorthernPakistan</h3>
+                    <p>Discover the majestic beauty of Pakistan's northern regions with our curated travel experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Destinations</h4>
+                    <ul>
+                        <li><a href="hunza.html">Hunza Valley</a></li>
+                        <li><a href="swat.html">Swat Valley</a></li>
+                        <li><a href="murree.html">Murree</a></li>
+                        <li><a href="skardu.html">Skardu</a></li>
+                        <li><a href="gilgit.html">Gilgit</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="tour-packages.html">Tour Packages</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Islamabad, Pakistan</li>
+                        <li><i class="fas fa-phone"></i> +92 300 1234567</li>
+                        <li><i class="fas fa-envelope"></i> info@northernpakistan.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 NorthernPakistan Tourism. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

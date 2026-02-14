@@ -1,0 +1,159 @@
+/* Mobile Responsive Styles for Admin Panel */
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    /* Mobile menu toggle button */
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1001;
+        background-color: #1a2a4f;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+    }
+
+    .sidebar {
+        width: 250px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px 15px; /* Reduced padding on mobile */
+    }
+
+    /* Overlay for mobile menu */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    /* Adjust header on mobile */
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    /* Adjust stats grid for mobile */
+    .stats-grid {
+        grid-template-columns: 1fr !important; /* Override inline styles */
+    }
+
+    /* Adjust destination grid for mobile */
+    .destination-grid {
+        grid-template-columns: 1fr !important; /* Override inline styles */
+    }
+
+    /* Adjust form elements for mobile */
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 10px 12px;
+        font-size: 14px; /* Slightly smaller text on mobile */
+    }
+
+    /* Adjust buttons for mobile */
+    .btn-primary,
+    .btn-secondary {
+        padding: 10px 15px;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .btn-sm {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+
+    /* Adjust place items for mobile */
+    .place-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .place-actions {
+        align-self: flex-end;
+    }
+
+    /* Adjust modal for mobile */
+    .modal-content {
+        width: 95% !important;
+        margin: 10% auto;
+        padding: 15px;
+    }
+
+    /* Adjust image previews for mobile */
+    .image-preview img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Adjust video preview for mobile */
+    .video-preview video {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Additional adjustments for very small screens */
+    .sidebar {
+        width: 220px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 16px; /* Larger text on very small screens for accessibility */
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .file-input-button {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Desktop styles remain unchanged for larger screens */
+@media screen and (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .sidebar-overlay {
+        display: none;
+    }
+}

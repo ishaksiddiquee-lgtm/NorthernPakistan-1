@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki Lover Folklore - Karachi Terminal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a;
+            color: #00ff00;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .terminal {
+            max-width: 1200px;
+            margin: 20px auto;
+            border: 2px solid #00cc00;
+            border-radius: 10px;
+            overflow: hidden;
+            height: calc(100vh - 40px);
+            background-color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .terminal-header {
+            background-color: #111;
+            padding: 10px 15px;
+            border-bottom: 2px solid #00cc00;
+            display: flex;
+            align-items: center;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 6px;
+            margin-right: 10px;
+        }
+
+        .terminal-button {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+
+        .close { background-color: #ff5f56; }
+        .minimize { background-color: #febc2e; }
+        .maximize { background-color: #28c840; }
+
+        .terminal-title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .terminal-body {
+            display: flex;
+            height: calc(100% - 50px);
+        }
+
+        .terminal-left {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 1px solid #005500;
+        }
+
+        .terminal-right {
+            width: 50%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mausoleum-gallery {
+            width: 90%;
+            height: 70%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+            border: 3px solid #00cc00;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 204, 0, 0.5);
+            background-color: #111;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border: 1px solid #005500;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            opacity: 0.9;
+        }
+
+        .terminal-prompt {
+            color: #00ff00;
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .terminal-text {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .command-line {
+            color: #00ff00;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #0a0a0a;
+            border: 1px solid #005500;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .quaid-info {
+            background-color: #0a0a0a;
+            border: 1px solid #005500;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .quaid-info h3 {
+            color: #00ff00;
+            margin-bottom: 10px;
+        }
+
+        .quaid-info p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <div class="terminal-button close"></div>
+                <div class="terminal-button minimize"></div>
+                <div class="terminal-button maximize"></div>
+            </div>
+            <div class="terminal-title">Wiki Lover Folklore - Karachi Terminal</div>
+        </div>
+        
+        <div class="terminal-body">
+            <div class="terminal-left">
+                <div class="terminal-prompt">$ LOADING KARACHI DATA...</div>
+                
+                <div class="terminal-text">
+                    <p>┌─────────────────────────────────────────┐</p>
+                    <p>| WELCOME TO KARACHI TERMINAL             |</p>
+                    <p>|                                       |</p>
+                    <p>| LOADING MAUSOLEUM DATA...             |</p>
+                    <p>|                                       |</p>
+                    <p>| CITY: KARACHI                          |</p>
+                    <p>| NICKNAME: CITY OF LIGHTS               |</p>
+                    <p>| STATUS: PAKISTAN'S LARGEST CITY        |</p>
+                    <p>└─────────────────────────────────────────┘</p>
+                </div>
+                
+                <div class="terminal-text">
+                    <p>$ Initializing Mazar-e-Quaid module...</p>
+                    <p>$ Loading architectural data...</p>
+                    <p>$ Retrieving historical records...</p>
+                    <p>$ Connecting to Karachi database...</p>
+                    <p>$ Data stream established...</p>
+                </div>
+                
+                <div class="quaid-info">
+                    <h3>ABOUT QUAD-E-AZAM'S MAZAR</h3>
+                    <p><strong>Location:</strong> Karachi, Sindh, Pakistan</p>
+                    <p><strong>Builder:</strong> Government of Pakistan</p>
+                    <p><strong>Material:</strong> White marble</p>
+                    <p><strong>Architect:</strong> Yahya Merchant</p>
+                    <p><strong>Completed:</strong> 1971 (permanent structure)</p>
+                    <p><strong>Significance:</strong> Final resting place of Muhammad Ali Jinnah, the founder of Pakistan</p>
+                    <p><strong>Design:</strong> Features Mughal and modern architectural elements</p>
+                </div>
+                
+                <div class="command-line">
+                    $ kubectl@karachi:~$ Starting Mazar-e-Quaid display sequence...<br>
+                    $ kubectl@karachi:~$ Loading multiple images...<br>
+                    $ kubectl@karachi:~$ Success: Gallery loaded in right panel
+                </div>
+            </div>
+            
+            <div class="terminal-right">
+                <div class="mausoleum-gallery">
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?mazar-e-quaid-exterior" alt="Mazar-e-Quaid Exterior" class="gallery-img">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?mazar-e-quaid-interior" alt="Mazar-e-Quaid Interior" class="gallery-img">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?mazar-e-quaid-marble" alt="Mazar-e-Quaid Marble Work" class="gallery-img">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?mazar-e-quaid-architecture" alt="Mazar-e-Quaid Architecture" class="gallery-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

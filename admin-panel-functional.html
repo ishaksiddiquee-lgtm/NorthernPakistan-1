@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Northern Pakistan Tourism</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #1a2a4f;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar h3 {
+            color: white;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin: 0 0 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar ul li {
+            margin: 0;
+        }
+        
+        .sidebar ul li a {
+            display: block;
+            color: #adb5bd;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .sidebar ul li a:hover, 
+        .sidebar ul li a.active {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 250px;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-header h1 {
+            color: #1a2a4f;
+            margin: 0;
+        }
+        
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .panel-section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .panel-section.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a2a4f;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: 'Open Sans', sans-serif;
+            box-sizing: border-box;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .btn-primary {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn-upload {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .destination-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            background: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .destination-card h4 {
+            margin-top: 0;
+            color: #1a2a4f;
+        }
+        
+        .destination-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .places-list {
+            margin-top: 15px;
+        }
+        
+        .place-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .place-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .file-input-wrapper input[type=file] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .file-input-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #2e8b57;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .file-name {
+            margin-left: 10px;
+            color: #666;
+        }
+        
+        .image-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .image-preview img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .video-preview {
+            margin-top: 10px;
+        }
+        
+        .video-preview video {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        .upload-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h3><i class="fas fa-cog"></i> Admin Panel</h3>
+            <ul>
+                <li><a href="#" class="nav-link active" data-target="dashboard">Dashboard</a></li>
+                <li><a href="#" class="nav-link" data-target="general-settings">General Settings</a></li>
+                <li><a href="#" class="nav-link" data-target="destinations">Destinations Management</a></li>
+                <li><a href="#" class="nav-link" data-target="swat-management">Swat Management</a></li>
+                <li><a href="#" class="nav-link" data-target="hunza-management">Hunza Management</a></li>
+                <li><a href="#" class="nav-link" data-target="murree-management">Murree Management</a></li>
+                <li><a href="#" class="nav-link" data-target="skardu-management">Skardu Management</a></li>
+                <li><a href="#" class="nav-link" data-target="lahore-management">Lahore Management</a></li>
+                <li><a href="#" class="nav-link" data-target="gilgit-management">Gilgit Management</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="dashboard-header">
+                <h1>Admin Dashboard</h1>
+                <a href="admin-login.html" class="logout-btn">Logout</a>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="panel-section active">
+                <h2>Welcome to Admin Panel</h2>
+                <p>Manage your Northern Pakistan Tourism website from here.</p>
+                
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-globe fa-2x" style="color: #2e8b57;"></i>
+                        <h3>General Settings</h3>
+                        <p>Manage website information</p>
+                    </div>
+                    
+                    <div style="background: #e3f2fd; padding: 20px; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-map-marked-alt fa-2x" style="color: #1976d2;"></i>
+                        <h3>Destinations</h3>
+                        <p>Manage 6 main destinations</p>
+                    </div>
+                    
+                    <div style="background: #fff3e0; padding: 20px; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-images fa-2x" style="color: #f57c00;"></i>
+                        <h3>Media</h3>
+                        <p>Upload images & videos</p>
+                    </div>
+                    
+                    <div style="background: #fce4ec; padding: 20px; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-edit fa-2x" style="color: #c2185b;"></i>
+                        <h3>Content</h3>
+                        <p>Edit descriptions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- General Settings Section -->
+            <div id="general-settings" class="panel-section">
+                <h2>General Settings</h2>
+                
+                <div class="form-group">
+                    <label for="websiteName">Website Name</label>
+                    <input type="text" id="websiteName" value="Northern Pakistan Tourism">
+                </div>
+                
+                <div class="form-group">
+                    <label for="websiteAddress">Website Address</label>
+                    <input type="text" id="websiteAddress" value="www.northernpakistan.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" value="Islamabad, Pakistan">
+                </div>
+                
+                <div class="form-group">
+                    <label for="websiteInfo">Basic Website Information</label>
+                    <textarea id="websiteInfo">Discover the majestic beauty of Pakistan's northern regions with our curated travel experiences. Explore the breathtaking landscapes of Hunza, Swat, Murree, and Skardu.</textarea>
+                </div>
+                
+                <button class="btn-primary" onclick="saveGeneralSettings()">Save Settings</button>
+            </div>
+
+            <!-- Destinations Management Section -->
+            <div id="destinations" class="panel-section">
+                <h2>Destinations Management</h2>
+                <p>Manage the 6 main destinations shown on the homepage</p>
+                
+                <div class="destination-grid">
+                    <div class="destination-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Mingora_swat_pakistan.jpg/800px-Mingora_swat_pakistan.jpg" id="swat-main-image" alt="Swat">
+                        <h4>Swat Valley</h4>
+                        <p>The Switzerland of Pakistan</p>
+                        <div class="upload-section">
+                            <label for="swat-upload">Upload Picture:</label>
+                            <div class="file-input-wrapper">
+                                <span class="file-input-button">Choose Image</span>
+                                <input type="file" id="swat-upload" accept="image/*" onchange="uploadDestinationImage('swat', this)">
+                            </div>
+                            <span class="file-name" id="swat-upload-name">No file chosen</span>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="showDestinationPanel('swat')">Manage Places</button>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Baltit_Fort_Hunza_Valley.jpg/800px-Baltit_Fort_Hunza_Valley.jpg" id="hunza-main-image" alt="Hunza">
+                        <h4>Hunza Valley</h4>
+                        <p>The crown jewel of Gilgit-Baltistan</p>
+                        <div class="upload-section">
+                            <label for="hunza-upload">Upload Picture:</label>
+                            <div class="file-input-wrapper">
+                                <span class="file-input-button">Choose Image</span>
+                                <input type="file" id="hunza-upload" accept="image/*" onchange="uploadDestinationImage('hunza', this)">
+                            </div>
+                            <span class="file-name" id="hunza-upload-name">No file chosen</span>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="showDestinationPanel('hunza')">Manage Places</button>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Murree_Pakistan_by_Amer_Daud.jpg/800px-Murree_Pakistan_by_Amer_Daud.jpg" id="murree-main-image" alt="Murree">
+                        <h4>Murree</h4>
+                        <p>Queen of Hills</p>
+                        <div class="upload-section">
+                            <label for="murree-upload">Upload Picture:</label>
+                            <div class="file-input-wrapper">
+                                <span class="file-input-button">Choose Image</span>
+                                <input type="file" id="murree-upload" accept="image/*" onchange="uploadDestinationImage('murree', this)">
+                            </div>
+                            <span class="file-name" id="murree-upload-name">No file chosen</span>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="showDestinationPanel('murree')">Manage Places</button>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/K2_8611m.jpg/800px-K2_8611m.jpg" id="skardu-main-image" alt="Skardu">
+                        <h4>Skardu</h4>
+                        <p>Gateway to K2 and Hidden Valleys</p>
+                        <div class="upload-section">
+                            <label for="skardu-upload">Upload Picture:</label>
+                            <div class="file-input-wrapper">
+                                <span class="file-input-button">Choose Image</span>
+                                <input type="file" id="skardu-upload" accept="image/*" onchange="uploadDestinationImage('skardu', this)">
+                            </div>
+                            <span class="file-name" id="skardu-upload-name">No file chosen</span>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="showDestinationPanel('skardu')">Manage Places</button>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Lahore_Badshahi_Mosque_View.jpg/800px-Lahore_Badshahi_Mosque_View.jpg" id="lahore-main-image" alt="Lahore">
+                        <h4>Lahore</h4>
+                        <p>The Heart of Pakistan</p>
+                        <div class="upload-section">
+                            <label for="lahore-upload">Upload Picture:</label>
+                            <div class="file-input-wrapper">
+                                <span class="file-input-button">Choose Image</span>
+                                <input type="file" id="lahore-upload" accept="image/*" onchange="uploadDestinationImage('lahore', this)">
+                            </div>
+                            <span class="file-name" id="lahore-upload-name">No file chosen</span>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="showDestinationPanel('lahore')">Manage Places</button>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Gilgit_river.jpg/800px-Gilgit_river.jpg" id="gilgit-main-image" alt="Gilgit">
+                        <h4>Gilgit</h4>
+                        <p>Heart of Gilgit-Baltistan</p>
+                        <div class="upload-section">
+                            <label for="gilgit-upload">Upload Picture:</label>
+                            <div class="file-input-wrapper">
+                                <span class="file-input-button">Choose Image</span>
+                                <input type="file" id="gilgit-upload" accept="image/*" onchange="uploadDestinationImage('gilgit', this)">
+                            </div>
+                            <span class="file-name" id="gilgit-upload-name">No file chosen</span>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="showDestinationPanel('gilgit')">Manage Places</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Swat Management Section -->
+            <div id="swat-management" class="panel-section">
+                <h2>Swat Management</h2>
+                
+                <h3>Manage Places in Swat</h3>
+                <div class="form-group">
+                    <label for="swat-place-select">Select Place</label>
+                    <select id="swat-place-select" onchange="loadPlaceDetails('swat', this.value)">
+                        <option value="">-- Select a place --</option>
+                        <option value="kalam">Kalam</option>
+                        <option value="mingora">Mingora</option>
+                        <option value="malam-jabba">Malam Jabba</option>
+                        <option value="miandam">Miandam</option>
+                        <option value="marghazar">Marghazar</option>
+                        <option value="udagram">Udagram</option>
+                    </select>
+                </div>
+                
+                <div id="swat-place-editor" style="display:none;">
+                    <h4 id="swat-place-title">Place Details</h4>
+                    
+                    <div class="form-group">
+                        <label for="swat-place-name">Place Name</label>
+                        <input type="text" id="swat-place-name" placeholder="Enter place name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="swat-place-image">Place Image</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Image</span>
+                            <input type="file" id="swat-place-image" accept="image/*" onchange="previewImage(this, 'swat-place-preview')">
+                        </div>
+                        <span class="file-name" id="swat-place-image-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="image-preview" id="swat-place-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="swat-place-desc">Description</label>
+                        <textarea id="swat-place-desc" placeholder="Enter description for this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="swat-place-video">Tourist Video</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Video</span>
+                            <input type="file" id="swat-place-video" accept="video/*" onchange="previewVideo(this, 'swat-video-preview')">
+                        </div>
+                        <span class="file-name" id="swat-place-video-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="video-preview" id="swat-video-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="swat-winter-info">Winter Information</label>
+                        <textarea id="swat-winter-info" placeholder="Describe winter experience at this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="swat-summer-info">Summer Information</label>
+                        <textarea id="swat-summer-info" placeholder="Describe summer experience at this place"></textarea>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="savePlaceDetails('swat')">Save Place</button>
+                    <button class="btn-secondary" onclick="cancelPlaceEdit()">Cancel</button>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Add New Place in Swat</h3>
+                <div class="form-group">
+                    <label for="new-swat-place-name">New Place Name</label>
+                    <input type="text" id="new-swat-place-name" placeholder="Enter new place name">
+                </div>
+                <button class="btn-primary" onclick="addNewPlace('swat')">Add Place</button>
+                
+                <h3 style="margin-top: 30px;">Existing Places in Swat</h3>
+                <div class="places-list" id="swat-places-list">
+                    <div class="place-item">
+                        <span>Kalam</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('swat', 'kalam')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('swat', 'kalam')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Mingora</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('swat', 'mingora')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('swat', 'mingora')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Malam Jabba</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('swat', 'malam-jabba')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('swat', 'malam-jabba')">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hunza Management Section -->
+            <div id="hunza-management" class="panel-section">
+                <h2>Hunza Management</h2>
+                
+                <h3>Manage Places in Hunza</h3>
+                <div class="form-group">
+                    <label for="hunza-place-select">Select Place</label>
+                    <select id="hunza-place-select" onchange="loadPlaceDetails('hunza', this.value)">
+                        <option value="">-- Select a place --</option>
+                        <option value="baltit-fort">Baltit Fort</option>
+                        <option value="hattu-lake">Hattu Lake</option>
+                        <option value="passu-cones">Passu Cones</option>
+                        <option value="karimabad">Karimabad</option>
+                        <option value="khunjerab-pass">Khunjerab Pass</option>
+                        <option value="atal-bandah">Atal Bandah</option>
+                    </select>
+                </div>
+                
+                <div id="hunza-place-editor" style="display:none;">
+                    <h4 id="hunza-place-title">Place Details</h4>
+                    
+                    <div class="form-group">
+                        <label for="hunza-place-name">Place Name</label>
+                        <input type="text" id="hunza-place-name" placeholder="Enter place name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hunza-place-image">Place Image</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Image</span>
+                            <input type="file" id="hunza-place-image" accept="image/*" onchange="previewImage(this, 'hunza-place-preview')">
+                        </div>
+                        <span class="file-name" id="hunza-place-image-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="image-preview" id="hunza-place-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="hunza-place-desc">Description</label>
+                        <textarea id="hunza-place-desc" placeholder="Enter description for this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hunza-place-video">Tourist Video</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Video</span>
+                            <input type="file" id="hunza-place-video" accept="video/*" onchange="previewVideo(this, 'hunza-video-preview')">
+                        </div>
+                        <span class="file-name" id="hunza-place-video-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="video-preview" id="hunza-video-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="hunza-winter-info">Winter Information</label>
+                        <textarea id="hunza-winter-info" placeholder="Describe winter experience at this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hunza-summer-info">Summer Information</label>
+                        <textarea id="hunza-summer-info" placeholder="Describe summer experience at this place"></textarea>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="savePlaceDetails('hunza')">Save Place</button>
+                    <button class="btn-secondary" onclick="cancelPlaceEdit()">Cancel</button>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Add New Place in Hunza</h3>
+                <div class="form-group">
+                    <label for="new-hunza-place-name">New Place Name</label>
+                    <input type="text" id="new-hunza-place-name" placeholder="Enter new place name">
+                </div>
+                <button class="btn-primary" onclick="addNewPlace('hunza')">Add Place</button>
+                
+                <h3 style="margin-top: 30px;">Existing Places in Hunza</h3>
+                <div class="places-list" id="hunza-places-list">
+                    <div class="place-item">
+                        <span>Baltit Fort</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('hunza', 'baltit-fort')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('hunza', 'baltit-fort')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Passu Cones</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('hunza', 'passu-cones')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('hunza', 'passu-cones')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Karimabad</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('hunza', 'karimabad')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('hunza', 'karimabad')">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Murree Management Section -->
+            <div id="murree-management" class="panel-section">
+                <h2>Murree Management</h2>
+                
+                <h3>Manage Places in Murree</h3>
+                <div class="form-group">
+                    <label for="murree-place-select">Select Place</label>
+                    <select id="murree-place-select" onchange="loadPlaceDetails('murree', this.value)">
+                        <option value="">-- Select a place --</option>
+                        <option value="mall-road">Mall Road</option>
+                        <option value="patriata">Patriata</option>
+                        <option value="lalazar">Lalazar</option>
+                        <option value="kashmir-point">Kashmir Point</option>
+                        <option value="phanseri-top">Phanseri Top</option>
+                        <option value="mali-unser">Mali Unser</option>
+                    </select>
+                </div>
+                
+                <div id="murree-place-editor" style="display:none;">
+                    <h4 id="murree-place-title">Place Details</h4>
+                    
+                    <div class="form-group">
+                        <label for="murree-place-name">Place Name</label>
+                        <input type="text" id="murree-place-name" placeholder="Enter place name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="murree-place-image">Place Image</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Image</span>
+                            <input type="file" id="murree-place-image" accept="image/*" onchange="previewImage(this, 'murree-place-preview')">
+                        </div>
+                        <span class="file-name" id="murree-place-image-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="image-preview" id="murree-place-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="murree-place-desc">Description</label>
+                        <textarea id="murree-place-desc" placeholder="Enter description for this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="murree-place-video">Tourist Video</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Video</span>
+                            <input type="file" id="murree-place-video" accept="video/*" onchange="previewVideo(this, 'murree-video-preview')">
+                        </div>
+                        <span class="file-name" id="murree-place-video-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="video-preview" id="murree-video-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="murree-winter-info">Winter Information</label>
+                        <textarea id="murree-winter-info" placeholder="Describe winter experience at this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="murree-summer-info">Summer Information</label>
+                        <textarea id="murree-summer-info" placeholder="Describe summer experience at this place"></textarea>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="savePlaceDetails('murree')">Save Place</button>
+                    <button class="btn-secondary" onclick="cancelPlaceEdit()">Cancel</button>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Add New Place in Murree</h3>
+                <div class="form-group">
+                    <label for="new-murree-place-name">New Place Name</label>
+                    <input type="text" id="new-murree-place-name" placeholder="Enter new place name">
+                </div>
+                <button class="btn-primary" onclick="addNewPlace('murree')">Add Place</button>
+                
+                <h3 style="margin-top: 30px;">Existing Places in Murree</h3>
+                <div class="places-list" id="murree-places-list">
+                    <div class="place-item">
+                        <span>Mall Road</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('murree', 'mall-road')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('murree', 'mall-road')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Patriata</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('murree', 'patriata')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('murree', 'patriata')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Lalazar</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('murree', 'lalazar')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('murree', 'lalazar')">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skardu Management Section -->
+            <div id="skardu-management" class="panel-section">
+                <h2>Skardu Management</h2>
+                
+                <h3>Manage Places in Skardu</h3>
+                <div class="form-group">
+                    <label for="skardu-place-select">Select Place</label>
+                    <select id="skardu-place-select" onchange="loadPlaceDetails('skardu', this.value)">
+                        <option value="">-- Select a place --</option>
+                        <option value="deosai">Deosai National Park</option>
+                        <option value="k2-base-camp">K2 Base Camp</option>
+                        <option value="satpara-lake">Satpara Lake</option>
+                        <option value="kachura-lakes">Kachura Lakes</option>
+                        <option value="shangrila">Shangrila Resort</option>
+                        <option value="hussaini-bridge">Hussaini Bridge</option>
+                    </select>
+                </div>
+                
+                <div id="skardu-place-editor" style="display:none;">
+                    <h4 id="skardu-place-title">Place Details</h4>
+                    
+                    <div class="form-group">
+                        <label for="skardu-place-name">Place Name</label>
+                        <input type="text" id="skardu-place-name" placeholder="Enter place name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="skardu-place-image">Place Image</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Image</span>
+                            <input type="file" id="skardu-place-image" accept="image/*" onchange="previewImage(this, 'skardu-place-preview')">
+                        </div>
+                        <span class="file-name" id="skardu-place-image-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="image-preview" id="skardu-place-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="skardu-place-desc">Description</label>
+                        <textarea id="skardu-place-desc" placeholder="Enter description for this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="skardu-place-video">Tourist Video</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Video</span>
+                            <input type="file" id="skardu-place-video" accept="video/*" onchange="previewVideo(this, 'skardu-video-preview')">
+                        </div>
+                        <span class="file-name" id="skardu-place-video-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="video-preview" id="skardu-video-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="skardu-winter-info">Winter Information</label>
+                        <textarea id="skardu-winter-info" placeholder="Describe winter experience at this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="skardu-summer-info">Summer Information</label>
+                        <textarea id="skardu-summer-info" placeholder="Describe summer experience at this place"></textarea>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="savePlaceDetails('skardu')">Save Place</button>
+                    <button class="btn-secondary" onclick="cancelPlaceEdit()">Cancel</button>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Add New Place in Skardu</h3>
+                <div class="form-group">
+                    <label for="new-skardu-place-name">New Place Name</label>
+                    <input type="text" id="new-skardu-place-name" placeholder="Enter new place name">
+                </div>
+                <button class="btn-primary" onclick="addNewPlace('skardu')">Add Place</button>
+                
+                <h3 style="margin-top: 30px;">Existing Places in Skardu</h3>
+                <div class="places-list" id="skardu-places-list">
+                    <div class="place-item">
+                        <span>Deosai National Park</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('skardu', 'deosai')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('skardu', 'deosai')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>K2 Base Camp</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('skardu', 'k2-base-camp')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('skardu', 'k2-base-camp')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Satpara Lake</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('skardu', 'satpara-lake')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('skardu', 'satpara-lake')">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lahore Management Section -->
+            <div id="lahore-management" class="panel-section">
+                <h2>Lahore Management</h2>
+                
+                <h3>Manage Places in Lahore</h3>
+                <div class="form-group">
+                    <label for="lahore-place-select">Select Place</label>
+                    <select id="lahore-place-select" onchange="loadPlaceDetails('lahore', this.value)">
+                        <option value="">-- Select a place --</option>
+                        <option value="badshahi-mosque">Badshahi Mosque</option>
+                        <option value="lahore-fort">Lahore Fort</option>
+                        <option value="shalimar-gardens">Shalimar Gardens</option>
+                        <option value="wazir-khan">Wazir Khan Mosque</option>
+                        <option value="data-darbar">Data Darbar</option>
+                        <option value="mall-road">Mall Road</option>
+                    </select>
+                </div>
+                
+                <div id="lahore-place-editor" style="display:none;">
+                    <h4 id="lahore-place-title">Place Details</h4>
+                    
+                    <div class="form-group">
+                        <label for="lahore-place-name">Place Name</label>
+                        <input type="text" id="lahore-place-name" placeholder="Enter place name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lahore-place-image">Place Image</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Image</span>
+                            <input type="file" id="lahore-place-image" accept="image/*" onchange="previewImage(this, 'lahore-place-preview')">
+                        </div>
+                        <span class="file-name" id="lahore-place-image-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="image-preview" id="lahore-place-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="lahore-place-desc">Description</label>
+                        <textarea id="lahore-place-desc" placeholder="Enter description for this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lahore-place-video">Tourist Video</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Video</span>
+                            <input type="file" id="lahore-place-video" accept="video/*" onchange="previewVideo(this, 'lahore-video-preview')">
+                        </div>
+                        <span class="file-name" id="lahore-place-video-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="video-preview" id="lahore-video-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="lahore-winter-info">Winter Information</label>
+                        <textarea id="lahore-winter-info" placeholder="Describe winter experience at this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lahore-summer-info">Summer Information</label>
+                        <textarea id="lahore-summer-info" placeholder="Describe summer experience at this place"></textarea>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="savePlaceDetails('lahore')">Save Place</button>
+                    <button class="btn-secondary" onclick="cancelPlaceEdit()">Cancel</button>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Add New Place in Lahore</h3>
+                <div class="form-group">
+                    <label for="new-lahore-place-name">New Place Name</label>
+                    <input type="text" id="new-lahore-place-name" placeholder="Enter new place name">
+                </div>
+                <button class="btn-primary" onclick="addNewPlace('lahore')">Add Place</button>
+                
+                <h3 style="margin-top: 30px;">Existing Places in Lahore</h3>
+                <div class="places-list" id="lahore-places-list">
+                    <div class="place-item">
+                        <span>Badshahi Mosque</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('lahore', 'badshahi-mosque')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('lahore', 'badshahi-mosque')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Lahore Fort</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('lahore', 'lahore-fort')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('lahore', 'lahore-fort')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Shalimar Gardens</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('lahore', 'shalimar-gardens')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('lahore', 'shalimar-gardens')">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gilgit Management Section -->
+            <div id="gilgit-management" class="panel-section">
+                <h2>Gilgit Management</h2>
+                
+                <h3>Manage Places in Gilgit</h3>
+                <div class="form-group">
+                    <label for="gilgit-place-select">Select Place</label>
+                    <select id="gilgit-place-select" onchange="loadPlaceDetails('gilgit', this.value)">
+                        <option value="">-- Select a place --</option>
+                        <option value="garden-of-eden">Garden of Eden</option>
+                        <option value="atal-banda">Atal Banda</option>
+                        <option value="rishikot">Rishikot</option>
+                        <option value="shandur-top">Shandur Top</option>
+                        <option value="naltar-valley">Naltar Valley</option>
+                        <option value="kalash-valley">Kalash Valley</option>
+                    </select>
+                </div>
+                
+                <div id="gilgit-place-editor" style="display:none;">
+                    <h4 id="gilgit-place-title">Place Details</h4>
+                    
+                    <div class="form-group">
+                        <label for="gilgit-place-name">Place Name</label>
+                        <input type="text" id="gilgit-place-name" placeholder="Enter place name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gilgit-place-image">Place Image</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Image</span>
+                            <input type="file" id="gilgit-place-image" accept="image/*" onchange="previewImage(this, 'gilgit-place-preview')">
+                        </div>
+                        <span class="file-name" id="gilgit-place-image-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="image-preview" id="gilgit-place-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="gilgit-place-desc">Description</label>
+                        <textarea id="gilgit-place-desc" placeholder="Enter description for this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gilgit-place-video">Tourist Video</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-input-button">Choose Video</span>
+                            <input type="file" id="gilgit-place-video" accept="video/*" onchange="previewVideo(this, 'gilgit-video-preview')">
+                        </div>
+                        <span class="file-name" id="gilgit-place-video-name">No file chosen</span>
+                    </div>
+                    
+                    <div class="video-preview" id="gilgit-video-preview"></div>
+                    
+                    <div class="form-group">
+                        <label for="gilgit-winter-info">Winter Information</label>
+                        <textarea id="gilgit-winter-info" placeholder="Describe winter experience at this place"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gilgit-summer-info">Summer Information</label>
+                        <textarea id="gilgit-summer-info" placeholder="Describe summer experience at this place"></textarea>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="savePlaceDetails('gilgit')">Save Place</button>
+                    <button class="btn-secondary" onclick="cancelPlaceEdit()">Cancel</button>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Add New Place in Gilgit</h3>
+                <div class="form-group">
+                    <label for="new-gilgit-place-name">New Place Name</label>
+                    <input type="text" id="new-gilgit-place-name" placeholder="Enter new place name">
+                </div>
+                <button class="btn-primary" onclick="addNewPlace('gilgit')">Add Place</button>
+                
+                <h3 style="margin-top: 30px;">Existing Places in Gilgit</h3>
+                <div class="places-list" id="gilgit-places-list">
+                    <div class="place-item">
+                        <span>Garden of Eden</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('gilgit', 'garden-of-eden')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('gilgit', 'garden-of-eden')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Shandur Top</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('gilgit', 'shandur-top')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('gilgit', 'shandur-top')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <span>Kalash Valley</span>
+                        <div class="place-actions">
+                            <button class="btn-primary btn-sm" onclick="editPlace('gilgit', 'kalash-valley')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="deletePlace('gilgit', 'kalash-valley')">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-data.js"></script>
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => {
+                    l.classList.remove('active');
+                });
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Hide all sections
+                document.querySelectorAll('.panel-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show target section
+                const target = this.getAttribute('data-target');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+        
+        // File input handling
+        function setupFileInputs() {
+            const fileInputs = document.querySelectorAll('input[type="file"]');
+            fileInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    const fileNameSpan = document.getElementById(this.id.replace('-upload', '-upload-name').replace('-image', '-image-name').replace('-video', '-video-name'));
+                    if (this.files.length > 0) {
+                        if (this.files.length === 1) {
+                            fileNameSpan.textContent = this.files[0].name;
+                        } else {
+                            fileNameSpan.textContent = `${this.files.length} files selected`;
+                        }
+                    } else {
+                        fileNameSpan.textContent = 'No file chosen';
+                    }
+                });
+            });
+        }
+        
+        // Initialize file inputs when page loads
+        document.addEventListener('DOMContentLoaded', setupFileInputs);
+        
+        // Load initial data
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load general settings
+            document.getElementById('websiteName').value = websiteSettings.name;
+            document.getElementById('websiteAddress').value = websiteSettings.address;
+            document.getElementById('location').value = websiteSettings.location;
+            document.getElementById('websiteInfo').value = websiteSettings.info;
+            
+            // Load destination images
+            document.getElementById('swat-main-image').src = destinations.swat.mainImage;
+            document.getElementById('hunza-main-image').src = destinations.hunza.mainImage;
+            document.getElementById('murree-main-image').src = destinations.murree.mainImage;
+            document.getElementById('skardu-main-image').src = destinations.skardu.mainImage;
+            document.getElementById('lahore-main-image').src = destinations.lahore.mainImage;
+            document.getElementById('gilgit-main-image').src = destinations.gilgit.mainImage;
+            
+            // Load places for each destination
+            loadDestinationPlaces('swat', 'swat-places-list');
+            loadDestinationPlaces('hunza', 'hunza-places-list');
+            loadDestinationPlaces('murree', 'murree-places-list');
+            loadDestinationPlaces('skardu', 'skardu-places-list');
+            loadDestinationPlaces('lahore', 'lahore-places-list');
+            loadDestinationPlaces('gilgit', 'gilgit-places-list');
+        });
+        
+        // Function to upload destination image
+        function uploadDestinationImage(destination, input) {
+            if (input.files.length === 0) return;
+            
+            const file = input.files[0];
+            if (!file.type.match('image.*')) {
+                alert('Please select an image file');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Update the image in the admin panel
+                document.getElementById(`${destination}-main-image`).src = e.target.result;
+                
+                // Update the image in the data store
+                adminFunctions.updateDestinationMainImage(destination, e.target.result);
+                
+                // In a real implementation, you would save this to the server
+                // and update the main website
+                alert(`Main image for ${destination.charAt(0).toUpperCase() + destination.slice(1)} updated successfully!`);
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        // Function to load places for a destination
+        function loadDestinationPlaces(destinationKey, listId) {
+            const placesList = document.getElementById(listId);
+            if (!placesList) return;
+            
+            // Clear existing places
+            placesList.innerHTML = '';
+            
+            // Add places for this destination
+            const places = destinations[destinationKey].places;
+            places.forEach(place => {
+                const placeItem = document.createElement('div');
+                placeItem.className = 'place-item';
+                placeItem.innerHTML = `
+                    <span>${place.name}</span>
+                    <div class="place-actions">
+                        <button class="btn-primary btn-sm" onclick="editPlace('${destinationKey}', '${place.id}')">Edit</button>
+                        <button class="btn-secondary btn-sm" onclick="deletePlace('${destinationKey}', '${place.id}')">Delete</button>
+                    </div>
+                `;
+                placesList.appendChild(placeItem);
+            });
+        }
+        
+        // Function to preview image
+        function previewImage(input, previewId) {
+            if (input.files.length === 0) return;
+            
+            const file = input.files[0];
+            if (!file.type.match('image.*')) {
+                alert('Please select an image file');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewDiv = document.getElementById(previewId);
+                previewDiv.innerHTML = '';
+                
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.title = file.name;
+                previewDiv.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        // Function to preview video
+        function previewVideo(input, previewId) {
+            if (input.files.length === 0) return;
+            
+            const file = input.files[0];
+            if (!file.type.match('video.*')) {
+                alert('Please select a video file');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewDiv = document.getElementById(previewId);
+                previewDiv.innerHTML = '';
+                
+                const video = document.createElement('video');
+                video.src = e.target.result;
+                video.controls = true;
+                previewDiv.appendChild(video);
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        // Function to load place details for editing
+        function loadPlaceDetails(destination, placeId) {
+            if (!placeId) {
+                document.getElementById(`${destination}-place-editor`).style.display = 'none';
+                return;
+            }
+            
+            // In a real implementation, this would load the place details from the data store
+            // For now, we'll just show the editor
+            document.getElementById(`${destination}-place-editor`).style.display = 'block';
+            document.getElementById(`${destination}-place-title`).textContent = `Editing: ${placeId.replace('-', ' ')}`;
+            
+            // Set the place name
+            document.getElementById(`${destination}-place-name`).value = placeId.replace('-', ' ');
+        }
+        
+        // Function to save place details
+        function savePlaceDetails(destination) {
+            const placeName = document.getElementById(`${destination}-place-name`).value;
+            const placeDesc = document.getElementById(`${destination}-place-desc`).value;
+            const winterInfo = document.getElementById(`${destination}-winter-info`).value;
+            const summerInfo = document.getElementById(`${destination}-summer-info`).value;
+            
+            if (!placeName) {
+                alert('Please enter a place name');
+                return;
+            }
+            
+            // In a real implementation, this would save the place details to the data store
+            alert(`Place "${placeName}" updated successfully!`);
+        }
+        
+        // Function to cancel place edit
+        function cancelPlaceEdit() {
+            // Hide all place editors
+            document.querySelectorAll('[id$="-place-editor"]').forEach(editor => {
+                editor.style.display = 'none';
+            });
+            
+            // Reset all select dropdowns
+            document.querySelectorAll('[id$="-place-select"]').forEach(select => {
+                select.value = '';
+            });
+        }
+        
+        // Function to edit a place
+        function editPlace(destination, placeId) {
+            // Set the select dropdown to the place
+            document.getElementById(`${destination}-place-select`).value = placeId;
+            
+            // Load the place details
+            loadPlaceDetails(destination, placeId);
+        }
+        
+        // Function to delete a place
+        function deletePlace(destination, placeId) {
+            if (confirm('Are you sure you want to delete this place?')) {
+                adminFunctions.deletePlace(destination, placeId);
+                loadDestinationPlaces(destination, `${destination}-places-list`);
+                alert('Place deleted successfully!');
+            }
+        }
+        
+        // Function to add a new place
+        function addNewPlace(destination) {
+            const newPlaceName = document.getElementById(`new-${destination}-place-name`).value;
+            
+            if (!newPlaceName) {
+                alert('Please enter a place name');
+                return;
+            }
+            
+            const placeData = {
+                name: newPlaceName,
+                description: '',
+                images: [],
+                videos: [],
+                winterInfo: '',
+                summerInfo: ''
+            };
+            
+            adminFunctions.addPlaceToDestination(destination, placeData);
+            loadDestinationPlaces(destination, `${destination}-places-list`);
+            
+            // Clear the input field
+            document.getElementById(`new-${destination}-place-name`).value = '';
+            
+            alert(`Place "${newPlaceName}" added successfully!`);
+        }
+        
+        // Function to save general settings
+        function saveGeneralSettings() {
+            const name = document.getElementById('websiteName').value;
+            const address = document.getElementById('websiteAddress').value;
+            const location = document.getElementById('location').value;
+            const info = document.getElementById('websiteInfo').value;
+            
+            adminFunctions.updateWebsiteName(name);
+            adminFunctions.updateWebsiteAddress(address);
+            adminFunctions.updateLocation(location);
+            adminFunctions.updateWebsiteInfo(info);
+            
+            alert('General settings saved successfully!');
+        }
+        
+        function showDestinationPanel(destination) {
+            // Remove active class from all links
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.classList.remove('active');
+            });
+            
+            // Add active class to destination link
+            document.querySelector(`[data-target="${destination}-management"]`).classList.add('active');
+            
+            // Hide all sections
+            document.querySelectorAll('.panel-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show destination management section
+            document.getElementById(`${destination}-management`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karachi Tourism | Famous Places in Karachi - The City of Lights</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2><a href="index.html">Northern<span>Pakistan</span></a></h2>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="#places" class="nav-link">Places</a>
+                    <a href="#about" class="nav-link">About Karachi</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="book-now.html" class="nav-link btn-primary">Book Now</a>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section" style="background-color: #f8f9fa; padding: 30px 0;">
+        <div class="container">
+            <div class="search-container" style="display: flex; justify-content: center; margin-bottom: 20px;">
+                <input type="text" id="karachiSearch" placeholder="Search Karachi attractions, places, activities..." 
+                       style="width: 70%; padding: 15px 25px; border: 2px solid #2e8b57; border-radius: 50px; font-size: 16px; outline: none;">
+                <button class="btn-primary" style="margin-left: 10px; padding: 15px 30px; border-radius: 50px;">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section with Image Frame -->
+    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1549006854-a1a23b7d5a31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80&crop=entropy');">
+        <div class="hero-content" style="display: flex; flex-direction: column; align-items: flex-start; position: relative; color: #000;">
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: flex-start;">
+                <div style="flex: 1; max-width: 55%;">
+                    <h1 style="color: #000;">Discover Karachi</h1>
+                    <p style="color: #000;">The City of Lights - Pakistan's largest city and economic hub</p>
+                    
+                    <div class="hero-btns">
+                        <a href="#places" class="btn-primary">Explore Places</a>
+                        <a href="#" class="btn-secondary" id="exploreKarachiBtn">Explore Karachi</a>
+                        <a href="contact.html" class="btn-secondary">Plan Your Trip</a>
+                    </div>
+                </div>
+                
+                <!-- Image Frame moved to the right and made even larger with high quality image -->
+                <div class="image-frame" style="width: 50%; min-width: 450px; aspect-ratio: 1/1; background: white; border-radius: 15px; padding: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); display: flex; flex-direction: column; align-items: center; margin-left: 20px;">
+                    <img src="image/123/images.jpg" alt="Karachi Cityscape" id="karachiImageFrame" 
+                         style="width: 100%; height: calc(100% - 40px); object-fit: cover; border-radius: 10px; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" 
+                         onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Karachi_skyline_from_clifton.jpg/2560px-Karachi_skyline_from_clifton.jpg';">
+                    <p style="margin-top: 10px; text-align: center; color: #000;">Karachi Cityscape</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Interface for Karachi Exploration -->
+    <section id="karachi-terminal" class="terminal-interface" style="display:none; background-color: #1a2a4f; color: white; padding: 40px 20px; margin-top: 20px;">
+        <div class="container">
+            <h2 style="text-align: center; color: white; margin-bottom: 30px;">Karachi Explorer Terminal</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #ccc;">Discover Karachi's highlights through our categorized exploration interface</p>
+            
+            <div class="terminal-content">
+                <div class="category-grid">
+                    <button class="category-btn" onclick="showCategory('big-malls')">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3>Big Malls</h3>
+                    </button>
+                    
+                    <button class="category-btn" onclick="showCategory('small-markets')">
+                        <i class="fas fa-store"></i>
+                        <h3>Small Markets</h3>
+                    </button>
+                    
+                    <button class="category-btn" onclick="showCategory('tallest-buildings')">
+                        <i class="fas fa-building"></i>
+                        <h3>Tallest Buildings</h3>
+                    </button>
+                    
+                    <button class="category-btn" onclick="showCategory('beautiful-areas')">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Most Beautiful Areas</h3>
+                    </button>
+                    
+                    <button class="category-btn" onclick="showCategory('food-spots')">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Food Spots</h3>
+                    </button>
+                    
+                    <button class="category-btn" onclick="showCategory('historical-sites')">
+                        <i class="fas fa-monument"></i>
+                        <h3>Historical Sites</h3>
+                    </button>
+                    
+                    <button class="category-btn" onclick="showCategory('beaches')">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h3>Beaches</h3>
+                    </button>
+                    
+                    <button class="category-btn" onclick="showCategory('parks')">
+                        <i class="fas fa-tree"></i>
+                        <h3>Parks & Recreation</h3>
+                    </button>
+                </div>
+                
+                <div id="category-content" class="category-content">
+                    <p>Select a category to explore Karachi's highlights!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Places in Karachi Section -->
+    <section id="places" class="destinations">
+        <div class="container">
+            <h2>Iconic Landmarks of Karachi</h2>
+            <p class="section-subtitle">Explore Karachi's most significant attractions with stunning visuals and detailed information</p>
+
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <div class="card-img">
+                        <a href="#mazar-e-quaid-modal" class="modal-trigger">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Mazar-e-Quaid_at_evening_%28cropped%29.jpg/1600px-Mazar-e-Quaid_at_evening_%28cropped%29.jpg" alt="Mazar-e-Quaid, Karachi">
+                            <div class="overlay">
+                                <h3>Mazar-e-Quaid</h3>
+                                <p>Founder's mausoleum</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <a href="#clifton-beach-modal" class="modal-trigger">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Clifton_Beach_Karachi.jpg/1600px-Clifton_Beach_Karachi.jpg" alt="Clifton Beach, Karachi">
+                            <div class="overlay">
+                                <h3>Clifton Beach</h3>
+                                <p>Coastal beauty</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <a href="#frere-hall-modal" class="modal-trigger">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Frere_Hall_Karachi.jpg/1600px-Frere_Hall_Karachi.jpg" alt="Frere Hall, Karachi">
+                            <div class="overlay">
+                                <h3>Frere Hall</h3>
+                                <p>Colonial heritage</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <a href="#karachi-port-modal" class="modal-trigger">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Karachi_Port_-_Pakistan.jpg/1600px-Karachi_Port_-_Pakistan.jpg" alt="Karachi Port, Karachi">
+                            <div class="overlay">
+                                <h3>Karachi Port</h3>
+                                <p>Historic port</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <a href="#empire-market-modal" class="modal-trigger">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Empress_Market_Karachi.jpg/1600px-Empress_Market_Karachi.jpg" alt="Empress Market, Karachi">
+                            <div class="overlay">
+                                <h3>Empress Market</h3>
+                                <p>Historic market</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <a href="#mohatta-palace-modal" class="modal-trigger">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mohatta_Palace_Karachi.jpg/1600px-Mohatta_Palace_Karachi.jpg" alt="Mohatta Palace, Karachi">
+                            <div class="overlay">
+                                <h3>Mohatta Palace</h3>
+                                <p>Architectural gem</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="card-img">
+                        <a href="#icon-tower-modal" class="modal-trigger">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Dolmen_Tower_Karachi.jpg/1600px-Dolmen_Tower_Karachi.jpg" alt="Icon Tower, Karachi">
+                            <div class="overlay">
+                                <h3>Icon Tower</h3>
+                                <p>Karachi's tallest building</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <a href="#jinnah-house-modal" class="modal-trigger">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Jinnah_House_Karachi.jpg/1600px-Jinnah_House_Karachi.jpg" alt="Jinnah House, Karachi">
+                            <div class="overlay">
+                                <h3>Jinnah House</h3>
+                                <p>Quaid-e-Azam's residence</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Karachi Section -->
+    <section id="about" class="activities">
+        <div class="container">
+            <h2>About Karachi</h2>
+            <div class="about-content">
+                <p>Karachi is the largest city in Pakistan and the capital of the province of Sindh. It is the most populous city in Pakistan and the twelfth-most populous city in the world. Located on the coast of the Arabian Sea, Karachi serves as Pakistan's premier seaport and main financial and economic center.</p>
+
+                <p>Karachi is known as the "City of Lights" due to its vibrant nightlife and the colorful lights of its markets and businesses that remain active throughout the night. The city has a rich history dating back to the ancient Indus Valley Civilization and has been ruled by various empires and dynasties over the centuries.</p>
+
+                <p>The city is a melting pot of cultures, with people from all over Pakistan and beyond calling it home. This diversity is reflected in its food, architecture, languages, and traditions. Pakistani cuisine is a delightful fusion of flavors, combining Central Asian, Middle Eastern, and Indian influences.</p>
+
+                <p>From the ancient ruins of the Indus Valley Civilization to the magnificent Mughal architecture, Pakistan's heritage spans millennia. Our regions offer everything from the alpine beauty of Gilgit-Baltistan to the desert landscapes of Tharparkar, from the fertile plains of Punjab to the rugged terrain of Balochistan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals for each location -->
+    <!-- Mazar-e-Quaid Modal -->
+    <div id="mazar-e-quaid-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Mazar-e-Quaid, Karachi - Founder's Mausoleum</h2>
+
+            <div class="modal-body">
+                <div class="location-images">
+                    <h3>Real Images of Mazar-e-Quaid</h3>
+                    <div class="image-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Mazar-e-Quaid_at_evening_%28cropped%29.jpg/800px-Mazar-e-Quaid_at_evening_%28cropped%29.jpg" alt="Mazar-e-Quaid Main Building">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Mazar-e-Quaid_Interior.jpg/800px-Mazar-e-Quaid_Interior.jpg" alt="Mazar-e-Quaid Interior">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Mazar-e-Quaid_Architecture_Detail.jpg/800px-Mazar-e-Quaid_Architecture_Detail.jpg" alt="Mazar-e-Quaid Architecture">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Mazar-e-Quaid_Courtyard.jpg/800px-Mazar-e-Quaid_Courtyard.jpg" alt="Mazar-e-Quaid Courtyard">
+                    </div>
+                </div>
+
+                <div class="location-videos">
+                    <h3>Tourist Videos</h3>
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Click to play Mazar-e-Quaid Tourist Video</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seasonal-info">
+                    <h3>Seasonal Information</h3>
+                    <div class="seasons">
+                        <div class="season">
+                            <h4><i class="fas fa-snowflake"></i> Winter Experience</h4>
+                            <p>Winters in Karachi (December to February) bring pleasant temperatures ranging from 10°C to 25°C. This is the ideal time to visit Mazar-e-Quaid as the weather is comfortable for exploring the mausoleum and its surrounding gardens. The clear winter skies provide excellent visibility for photography and appreciating the white marble architecture.</p>
+                        </div>
+                        <div class="season">
+                            <h4><i class="fas fa-sun"></i> Summer Experience</h4>
+                            <p>Summers in Karachi are hot and humid with temperatures often exceeding 40°C. Visiting Mazar-e-Quaid during summer is possible, especially in the early morning or evening hours when it's cooler. The mausoleum's interior remains cool, providing relief from the external heat. Visitors should carry water and wear light clothing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-details">
+                    <h3>About Mazar-e-Quaid</h3>
+                    <p>Mazar-e-Quaid is the mausoleum of Muhammad Ali Jinnah, the founder of Pakistan. Located in the heart of Karachi, this iconic white marble structure is one of the most important landmarks in Pakistan. The mausoleum was designed by Yahya Merchant and completed in 1970.</p>
+
+                    <p>The structure is made of white Makrana marble from Rajasthan, India, and stands as a symbol of the nation's founding principles. The mausoleum houses the graves of Jinnah (Quaid-e-Azam), his sister Fatima Jinnah (Madr-e-Millat), Liaquat Ali Khan (Pakistan's first Prime Minister), and his wife Ra'ana Liaquat Ali Khan.</p>
+
+                    <p>Visitors to Mazar-e-Quaid can pay respects to Pakistan's founding father, learn about the country's independence struggle, and appreciate the elegant architecture. The site is open to visitors of all faiths and backgrounds, representing the secular ideals of Pakistan's founder. The building features a blend of Islamic and modern architectural styles.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clifton Beach Modal -->
+    <div id="clifton-beach-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Clifton Beach, Karachi - Coastal Beauty</h2>
+
+            <div class="modal-body">
+                <div class="location-images">
+                    <h3>Real Images of Clifton Beach</h3>
+                    <div class="image-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Clifton_Beach_Karachi.jpg/1000px-Clifton_Beach_Karachi.jpg" alt="Clifton Beach View">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Karachi_Clifton_beach.jpg/1000px-Karachi_Clifton_beach.jpg" alt="Clifton Beach Waves">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Clifton_Karachi_Sunset.jpg/1000px-Clifton_Karachi_Sunset.jpg" alt="Clifton Beach Sunset">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Clifton_Beach_activities.jpg/1000px-Clifton_Beach_activities.jpg" alt="Clifton Beach Activities">
+                    </div>
+                </div>
+
+                <div class="location-videos">
+                    <h3>Tourist Videos</h3>
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Click to play Clifton Beach Tourist Video</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seasonal-info">
+                    <h3>Seasonal Information</h3>
+                    <div class="seasons">
+                        <div class="season">
+                            <h4><i class="fas fa-snowflake"></i> Winter Experience</h4>
+                            <p>Winters in Karachi (December to February) provide pleasant conditions for visiting Clifton Beach. The weather is cool and comfortable with temperatures ranging from 10°C to 25°C. The beach is ideal for walks, picnics, and enjoying the sea breeze. The clear skies make it perfect for photography and outdoor activities.</p>
+                        </div>
+                        <div class="season">
+                            <h4><i class="fas fa-sun"></i> Summer Experience</h4>
+                            <p>Summers in Karachi are hot, making beach visits refreshing during the day. The temperature ranges from 25°C to 40°C. Swimming is possible but visitors should be cautious of currents. The beach is particularly beautiful during sunset hours when the temperature cools down. Evening visits are recommended for comfort.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-details">
+                    <h3>About Clifton Beach</h3>
+                    <p>Clifton Beach, also known as Seaview, is one of Karachi's most popular beaches located along the Arabian Sea. The beach stretches for several kilometers and offers beautiful views of the coastline. It's a favorite spot for locals and tourists alike, especially during weekends and holidays.</p>
+
+                    <p>The beach features food stalls, camel rides, and various recreational activities. The area around Clifton Beach has seen significant development with parks, recreational facilities, and improved infrastructure. The beach is also known for its seafood restaurants offering fresh catches.</p>
+
+                    <p>Visitors to Clifton Beach can enjoy swimming, sunbathing, beach walks, camel rides, and delicious seafood. The beach offers a perfect escape from the city's hustle and bustle, providing a relaxing environment with the sound of waves and sea breeze. The beach is particularly beautiful during sunrise and sunset hours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Frere Hall Modal -->
+    <div id="frere-hall-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+        <h2>Frere Hall, Karachi - Colonial Heritage</h2>
+
+            <div class="modal-body">
+                <div class="location-images">
+                    <h3>Real Images of Frere Hall</h3>
+                    <div class="image-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Frere_Hall_Karachi.jpg/800px-Frere_Hall_Karachi.jpg" alt="Frere Hall Architecture">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Frere_Hall_Gardens.jpg/800px-Frere_Hall_Gardens.jpg" alt="Frere Hall Gardens">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Frere_Hall_Interior.jpg/800px-Frere_Hall_Interior.jpg" alt="Frere Hall Interior">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Frere_Hall_Exhibition.jpg/800px-Frere_Hall_Exhibition.jpg" alt="Frere Hall Events">
+                    </div>
+                </div>
+
+                <div class="location-videos">
+                    <h3>Tourist Videos</h3>
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Click to play Frere Hall Tourist Video</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seasonal-info">
+                    <h3>Seasonal Information</h3>
+                    <div class="seasons">
+                        <div class="season">
+                            <h4><i class="fas fa-snowflake"></i> Winter Experience</h4>
+                            <p>Winters in Karachi (December to February) provide the most comfortable conditions for visiting Frere Hall. The weather is pleasant with temperatures ranging from 10°C to 25°C. The cooler weather makes it enjoyable to explore the building's architecture and the surrounding gardens. The clear winter air enhances visibility for photography.</p>
+                        </div>
+                        <div class="season">
+                            <h4><i class="fas fa-sun"></i> Summer Experience</h4>
+                            <p>Summers in Karachi are hot, but Frere Hall provides a cool sanctuary with its thick walls and shaded areas. The temperature ranges from 25°C to 40°C. The building's interior remains cooler than the outside, making it a pleasant retreat. Early morning or evening visits are recommended when it's cooler outside.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-details">
+                    <h3>About Frere Hall</h3>
+                    <p>Frere Hall is a historic building constructed in 1865 during the British colonial period in Karachi. Named after Sir Bartle Frere, the then Commissioner of Sindh, the building features beautiful gardens and serves as an art gallery and cultural center today.</p>
+
+                    <p>The building showcases colonial architecture with its arched corridors, high ceilings, and detailed stonework. Built in the Italianate style, it features a central dome and four minarets. The surrounding gardens are well-maintained with pathways, fountains, and various plant species. The hall regularly hosts art exhibitions, cultural events, and public gatherings.</p>
+
+                    <p>Visitors to Frere Hall can admire colonial architecture, explore the art galleries, stroll through the gardens, and attend cultural events. The site offers a glimpse into Karachi's colonial past and its ongoing cultural activities. The peaceful gardens provide a tranquil escape from the city's busy streets. The building is also known for its library and historical artifacts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Karachi Port Modal -->
+    <div id="karachi-port-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Karachi Port, Karachi - Historic Port</h2>
+
+            <div class="modal-body">
+                <div class="location-images">
+                    <h3>Real Images of Karachi Port</h3>
+                    <div class="image-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Karachi_Port_-_Pakistan.jpg/800px-Karachi_Port_-_Pakistan.jpg" alt="Karachi Port Overview">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Karachi_Port_ships.jpg/800px-Karachi_Port_ships.jpg" alt="Karachi Port Ships">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Karachi_Port_operations.jpg/800px-Karachi_Port_operations.jpg" alt="Karachi Port Operations">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Karachi_Port_infrastructure.jpg/800px-Karachi_Port_infrastructure.jpg" alt="Karachi Port Infrastructure">
+                    </div>
+                </div>
+
+                <div class="location-videos">
+                    <h3>Tourist Videos</h3>
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Click to play Karachi Port Tourist Video</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seasonal-info">
+                    <h3>Seasonal Information</h3>
+                    <div class="seasons">
+                        <div class="season">
+                            <h4><i class="fas fa-snowflake"></i> Winter Experience</h4>
+                            <p>Winters in Karachi (December to February) provide pleasant conditions for visiting areas near Karachi Port. The weather is cool and comfortable with temperatures ranging from 10°C to 25°C. The cooler weather makes it easier to explore the port area and appreciate the maritime activities. The clear skies enhance visibility for observing ships and port operations.</p>
+                        </div>
+                        <div class="season">
+                            <h4><i class="fas fa-sun"></i> Summer Experience</h4>
+                            <p>Summers in Karachi are hot and humid, making outdoor activities near the port challenging during midday. The temperature ranges from 25°C to 40°C. Early morning or evening visits are recommended when it's cooler. The sea breeze from the Arabian Sea provides some relief from the heat. Visitors should carry water and wear light clothing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-details">
+                    <h3>About Karachi Port</h3>
+                    <p>Karachi Port is Pakistan's oldest and busiest deep-sea port, established in 1854. Located on the coast of the Arabian Sea, it handles the majority of Pakistan's cargo traffic and serves as a crucial gateway for international trade.</p>
+
+                    <p>The port consists of two main facilities: the Karachi Port Trust and the nearby Port Qasim. Together, they handle containers, bulk cargo, oil, and other goods. The port plays a vital role in Pakistan's economy, facilitating imports and exports worth billions of dollars annually. Established during British rule, it has been expanded multiple times to accommodate growing trade volumes.</p>
+
+                    <p>While direct access to the operational areas is restricted for security reasons, visitors can observe the port from designated viewing areas and learn about Pakistan's maritime trade. The port area also includes the Pakistan Maritime Museum, which showcases the country's naval history and maritime heritage. The port has played a significant role in Pakistan's economic development since independence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empress Market Modal -->
+    <div id="empire-market-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Empress Market, Karachi - Historic Market</h2>
+
+            <div class="modal-body">
+                <div class="location-images">
+                    <h3>Real Images of Empress Market</h3>
+                    <div class="image-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Empress_Market_Karachi.jpg/800px-Empress_Market_Karachi.jpg" alt="Empress Market Façade">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Empress_Market_Interior.jpg/800px-Empress_Market_Interior.jpg" alt="Empress Market Interior">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Empress_Market_Vendors.jpg/800px-Empress_Market_Vendors.jpg" alt="Empress Market Vendors">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Empress_Market_Products.jpg/800px-Empress_Market_Products.jpg" alt="Empress Market Products">
+                    </div>
+                </div>
+
+                <div class="location-videos">
+                    <h3>Tourist Videos</h3>
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Click to play Empress Market Tourist Video</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seasonal-info">
+                    <h3>Seasonal Information</h3>
+                    <div class="seasons">
+                        <div class="season">
+                            <h4><i class="fas fa-snowflake"></i> Winter Experience</h4>
+                            <p>Winters in Karachi (December to February) provide comfortable conditions for exploring Empress Market. The weather is cool and pleasant with temperatures ranging from 10°C to 25°C. The cooler weather makes it enjoyable to browse through the market's various sections and interact with vendors. The clear air enhances the sensory experience of the market.</p>
+                        </div>
+                        <div class="season">
+                            <h4><i class="fas fa-sun"></i> Summer Experience</h4>
+                            <p>Summers in Karachi are hot, but Empress Market's covered structure provides shade and some relief from the heat. The temperature ranges from 25°C to 40°C. The market remains active during summer, though early morning or evening visits are recommended. The covered areas help maintain a more comfortable temperature than the surrounding streets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-details">
+                    <h3>About Empress Market</h3>
+                    <p>Empress Market, built in 1885 during British colonial rule, is one of Karachi's oldest and most famous markets. Named after Queen Victoria (the Empress of India), the market is housed in a beautiful Gothic-style building with a distinctive clock tower.</p>
+
+                    <p>The market is divided into different sections selling various goods including textiles, spices, jewelry, handicrafts, and local products. It's a bustling commercial center where visitors can experience local culture and find unique items. The market reflects Karachi's role as a trading hub and has been central to the city's commercial activity for over a century.</p>
+
+                    <p>Visitors to Empress Market can shop for traditional Pakistani goods, spices, fabrics, and souvenirs. The market offers an authentic glimpse into local commerce and daily life in Karachi. Bargaining is common practice, and visitors should be prepared for the lively atmosphere of this historic marketplace. The market is especially vibrant during the month of Ramadan and other festivals.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mohatta Palace Modal -->
+    <div id="mohatta-palace-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Mohatta Palace, Karachi - Architectural Gem</h2>
+
+            <div class="modal-body">
+                <div class="location-images">
+                    <h3>Real Images of Mohatta Palace</h3>
+                    <div class="image-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mohatta_Palace_Karachi.jpg/800px-Mohatta_Palace_Karachi.jpg" alt="Mohatta Palace Architecture">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Mohatta_Palace_Gardens.jpg/800px-Mohatta_Palace_Gardens.jpg" alt="Mohatta Palace Gardens">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Mohatta_Palace_Interior.jpg/800px-Mohatta_Palace_Interior.jpg" alt="Mohatta Palace Interior">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Mohatta_Palace_Art_Collection.jpg/800px-Mohatta_Palace_Art_Collection.jpg" alt="Mohatta Palace Art">
+                    </div>
+                </div>
+
+                <div class="location-videos">
+                    <h3>Tourist Videos</h3>
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Click to play Mohatta Palace Tourist Video</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seasonal-info">
+                    <h3>Seasonal Information</h3>
+                    <div class="seasons">
+                        <div class="season">
+                            <h4><i class="fas fa-snowflake"></i> Winter Experience</h4>
+                            <p>Winters in Karachi (December to February) provide the most pleasant conditions for visiting Mohatta Palace. The weather is cool and comfortable with temperatures ranging from 10°C to 25°C. The cooler weather makes it enjoyable to explore both the palace's architecture and its surrounding gardens. The clear winter air enhances visibility for photography.</p>
+                        </div>
+                        <div class="season">
+                            <h4><i class="fas fa-sun"></i> Summer Experience</h4>
+                            <p>Summers in Karachi are hot, but Mohatta Palace's thick walls and covered areas provide a cool refuge from the heat. The temperature ranges from 25°C to 40°C. The palace remains cooler inside than the outside environment, making it a pleasant retreat. Early morning or evening visits are recommended for overall comfort.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-details">
+                    <h3>About Mohatta Palace</h3>
+                    <p>Mohatta Palace is a beautiful example of Indo-Saracenic architecture built in 1927 by Rai Bahadur Hiralal Shanti Lal. Originally built as a summer residence for a wealthy Hindu businessman, the palace now serves as a museum showcasing Pakistani arts and crafts.</p>
+
+                    <p>The palace features distinctive Rajasthani architectural elements with its pink Jodhpur stone construction and ornate jali screens. The building overlooks the Arabian Sea and is surrounded by well-maintained gardens. The palace represents the architectural heritage of the pre-partition era and was converted into a cultural center and museum in 1999.</p>
+
+                    <p>Visitors to Mohatta Palace can admire its unique architecture, view the art collections, stroll through the gardens, and learn about the region's history. The palace offers insights into the lifestyle of wealthy merchants in the early 20th century and the architectural styles of that period. The sea view adds to the palace's charm. The palace regularly hosts art exhibitions, cultural events, and heritage tours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jinnah House (Quaid-e-Azam's Residency) Modal -->
+    <div id="mausoleum-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Jinnah House, Karachi - Quaid-e-Azam's Residence</h2>
+
+            <div class="modal-body">
+                <div class="location-images">
+                    <h3>Real Images of Jinnah House</h3>
+                    <div class="image-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Jinnah_House_Karachi.jpg/800px-Jinnah_House_Karachi.jpg" alt="Jinnah House Front View">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jinnah_House_interior.jpg/800px-Jinnah_House_interior.jpg" alt="Jinnah House Interior">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Jinnah_House_museum_items.jpg/800px-Jinnah_House_museum_items.jpg" alt="Jinnah House Museum Items">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Jinnah_House_garden.jpg/800px-Jinnah_House_garden.jpg" alt="Jinnah House Garden">
+                    </div>
+                </div>
+
+                <div class="location-videos">
+                    <h3>Tourist Videos</h3>
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Click to play Jinnah House Tourist Video</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seasonal-info">
+                    <h3>Seasonal Information</h3>
+                    <div class="seasons">
+                        <div class="season">
+                            <h4><i class="fas fa-snowflake"></i> Winter Experience</h4>
+                            <p>Winters in Karachi (December to February) provide the most comfortable conditions for visiting Jinnah House. The weather is cool and pleasant with temperatures ranging from 10°C to 25°C. The cooler climate makes it easier to explore the historical rooms and exhibits. The clear winter air enhances the experience of this sacred site.</p>
+                        </div>
+                        <div class="season">
+                            <h4><i class="fas fa-sun"></i> Summer Experience</h4>
+                            <p>Summers in Karachi are hot and humid, but the house's thick walls and shaded areas provide a cooler environment inside. The temperature ranges from 25°C to 40°C. Early morning or evening visits are recommended when it's cooler. The interior remains temperate compared to the external heat.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-details">
+                    <h3>About Jinnah House</h3>
+                    <p>Jinnah House, also known as Quaid-e-Azam House Museum, is the former residence of Muhammad Ali Jinnah, the founder of Pakistan. Located in the Kharadar area of Karachi, this building served as Jinnah's home after the partition of India in 1947 until his death in 1948.</p>
+
+                    <p>The two-story building was constructed in the 1870s and features typical colonial architecture with wooden floors, high ceilings, and large windows. The house was donated to the Government of Pakistan by Jinnah's sister, Fatima Jinnah, after his death. The building has been preserved as a national monument and museum.</p>
+
+                    <p>Visitors to Jinnah House can see the original furniture, personal belongings, books, and photographs that belonged to Jinnah. The house provides insight into the personal life of Pakistan's founder and the simplicity of his living arrangements despite his position as the country's first Governor-General. The museum displays many artifacts related to Jinnah's life and the creation of Pakistan.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Icon Tower Modal -->
+    <div id="icon-tower-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Icon Tower, Karachi - City's Tallest Building</h2>
+
+            <div class="modal-body">
+                <div class="location-images">
+                    <h3>Real Images of Icon Tower (Dolmen Tower)</h3>
+                    <div class="image-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Dolmen_Tower_Karachi.jpg/800px-Dolmen_Tower_Karachi.jpg" alt="Icon Tower Skyline View">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Karachi_skyline_at_night.jpg/800px-Karachi_skyline_at_night.jpg" alt="Icon Tower at Night">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Karachi_skyline_from_clifton.jpg/800px-Karachi_skyline_from_clifton.jpg" alt="Icon Tower from Clifton">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Karachi_skyline_with_Dolmen_Tower.jpg/800px-Karachi_skyline_with_Dolmen_Tower.jpg" alt="Icon Tower Aerial View">
+                    </div>
+                </div>
+
+                <div class="location-videos">
+                    <h3>Tourist Videos</h3>
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Click to play Icon Tower Tourist Video</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seasonal-info">
+                    <h3>Seasonal Information</h3>
+                    <div class="seasons">
+                        <div class="season">
+                            <h4><i class="fas fa-snowflake"></i> Winter Experience</h4>
+                            <p>Winters in Karachi (December to February) provide the best conditions for viewing Icon Tower and the surrounding cityscape. The weather is cool and comfortable with temperatures ranging from 10°C to 25°C. The clear winter skies offer excellent visibility for photography and appreciating the tower's architecture. The cool evenings are perfect for viewing the illuminated building.</p>
+                        </div>
+                        <div class="season">
+                            <h4><i class="fas fa-sun"></i> Summer Experience</h4>
+                            <p>Summers in Karachi are hot and humid, but Icon Tower remains an impressive sight from a distance. The temperature ranges from 25°C to 40°C. The tower's glass facade reflects the sunlight, creating a striking appearance. Evening visits provide relief from the heat and the tower is beautifully illuminated at night.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-details">
+                    <h3>About Icon Tower (Dolmen Tower)</h3>
+                    <p>Icon Tower, formerly known as Dolmen Tower, is the tallest building in Karachi and one of the tallest in Pakistan. Standing at 239 meters (784 feet) with 52 floors, it was completed in 2010 and has become an iconic part of Karachi's skyline.</p>
+
+                    <p>The tower is located in the prestigious DHA Defence area of Karachi and serves primarily as an office building. It features state-of-the-art facilities including high-speed elevators, advanced HVAC systems, and modern security features. The building's design incorporates contemporary architectural elements with energy-efficient systems.</p>
+
+                    <p>As Karachi's tallest structure, Icon Tower represents the city's rapid urban development and economic growth. It offers panoramic views of the Arabian Sea and the sprawling metropolis of Karachi. The building has become a symbol of modern Karachi and its aspirations for the future.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jinnah House Modal -->
+    <div id="jinnah-house-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Jinnah House, Karachi - Quaid-e-Azam's Residence</h2>
+
+            <div class="modal-body">
+                <div class="location-images">
+                    <h3>Real Images of Jinnah House</h3>
+                    <div class="image-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Jinnah_House_Karachi.jpg/800px-Jinnah_House_Karachi.jpg" alt="Jinnah House Front View">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jinnah_House_interior.jpg/800px-Jinnah_House_interior.jpg" alt="Jinnah House Interior">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Jinnah_House_museum_items.jpg/800px-Jinnah_House_museum_items.jpg" alt="Jinnah House Museum Items">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Jinnah_House_garden.jpg/800px-Jinnah_House_garden.jpg" alt="Jinnah House Garden">
+                    </div>
+                </div>
+
+                <div class="location-videos">
+                    <h3>Tourist Videos</h3>
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Click to play Jinnah House Tourist Video</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seasonal-info">
+                    <h3>Seasonal Information</h3>
+                    <div class="seasons">
+                        <div class="season">
+                            <h4><i class="fas fa-snowflake"></i> Winter Experience</h4>
+                            <p>Winters in Karachi (December to February) provide the most comfortable conditions for visiting Jinnah House. The weather is cool and pleasant with temperatures ranging from 10°C to 25°C. The cooler climate makes it easier to explore the historical rooms and exhibits. The clear winter air enhances the experience of this sacred site.</p>
+                        </div>
+                        <div class="season">
+                            <h4><i class="fas fa-sun"></i> Summer Experience</h4>
+                            <p>Summers in Karachi are hot and humid, but the house's thick walls and shaded areas provide a cooler environment inside. The temperature ranges from 25°C to 40°C. Early morning or evening visits are recommended when it's cooler. The interior remains temperate compared to the external heat.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-details">
+                    <h3>About Jinnah House</h3>
+                    <p>Jinnah House, also known as Quaid-e-Azam House Museum, is the former residence of Muhammad Ali Jinnah, the founder of Pakistan. Located in the Kharadar area of Karachi, this building served as Jinnah's home after the partition of India in 1947 until his death in 1948.</p>
+
+                    <p>The two-story building was constructed in the 1870s and features typical colonial architecture with wooden floors, high ceilings, and large windows. The house was donated to the Government of Pakistan by Jinnah's sister, Fatima Jinnah, after his death. The building has been preserved as a national monument and museum.</p>
+
+                    <p>Visitors to Jinnah House can see the original furniture, personal belongings, books, and photographs that belonged to Jinnah. The house provides insight into the personal life of Pakistan's founder and the simplicity of his living arrangements despite his position as the country's first Governor-General. The museum displays many artifacts related to Jinnah's life and the creation of Pakistan.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Plan Your Karachi Adventure</h2>
+            <p>Subscribe to receive travel tips, exclusive offers, and destination guides</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NorthernPakistan</h3>
+                    <p>Discover the majestic beauty of Pakistan's northern regions with our curated travel experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Destinations</h4>
+                    <ul>
+                        <li><a href="hunza.html">Hunza Valley</a></li>
+                        <li><a href="swat.html">Swat Valley</a></li>
+                        <li><a href="murree.html">Murree</a></li>
+                        <li><a href="skardu.html">Skardu</a></li>
+                        <li><a href="gilgit.html">Gilgit</a></li>
+                        <li><a href="karachi-search.html">Karachi</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="tour-packages.html">Tour Packages</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Islamabad, Pakistan</li>
+                        <li><i class="fas fa-phone"></i> +92 300 1234567</li>
+                        <li><i class="fas fa-envelope"></i> info@northernpakistan.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 NorthernPakistan Tourism. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Karachi Terminal Interface -->
+    <script>
+        // Show/hide terminal interface when Explore Karachi button is clicked
+        document.getElementById('exploreKarachiBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const terminal = document.getElementById('karachi-terminal');
+            if (terminal.style.display === 'none' || terminal.style.display === '') {
+                terminal.style.display = 'block';
+                this.textContent = 'Hide Explorer';
+            } else {
+                terminal.style.display = 'none';
+                this.textContent = 'Explore Karachi';
+            }
+        });
+
+        // Function to show selected category content
+        function showCategory(category) {
+            // Show the selected category content dynamically
+            createCategoryContent(category);
+        }
+
+        // Function to dynamically create category content
+        function createCategoryContent(category) {
+            const contentDiv = document.getElementById('category-content');
+            
+            // Clear previous content
+            contentDiv.innerHTML = '';
+            
+            // Create content based on category
+            let title, description, items;
+            
+            switch(category) {
+                case 'big-malls':
+                    title = 'Big Malls in Karachi';
+                    description = 'Karachi has some of the largest and most modern shopping malls in Pakistan:';
+                    items = [
+                        'Packages Mall - One of the largest malls with international brands',
+                        'Millennium Mall - Premium shopping destination with entertainment options',
+                        'Rueti Mall - Popular for fashion and dining',
+                        'Phoenix MarketCity - Modern mall with wide variety of stores',
+                        'Saddar Shopping District - Traditional shopping area with modern malls'
+                    ];
+                    break;
+                case 'small-markets':
+                    title = 'Small Markets in Karachi';
+                    description = 'Experience the local culture and authentic shopping in Karachi\'s small markets:';
+                    items = [
+                        'Empress Market - Historic market with local goods and spices',
+                        'Saddar Bazaar - Traditional market with local products',
+                        'Burns Road - Famous for street food and local shopping',
+                        'Tariq Road - Popular shopping area with local boutiques',
+                        'Garden East - Local market with affordable shopping options'
+                    ];
+                    break;
+                case 'tallest-buildings':
+                    title = 'Tallest Buildings in Karachi';
+                    description = 'Iconic skyscrapers that define Karachi\'s skyline:';
+                    items = [
+                        'Dolmen Tower - Iconic skyscraper in Clifton',
+                        'Meezan Bank Tower - Modern architectural marvel',
+                        'JS Bank Building - Prominent financial district building',
+                        'Habib Bank Plaza - Historic tall building in the city',
+                        'Al Khaleej Tower - Modern office and residential complex'
+                    ];
+                    break;
+                case 'beautiful-areas':
+                    title = 'Most Beautiful Areas in Karachi';
+                    description = 'Scenic and picturesque locations in Karachi:';
+                    items = [
+                        'Clifton Beach - Beautiful coastal area with sea views',
+                        'Hawksbay Beach - Pristine beach area with clean surroundings',
+                        'Frere Hall Gardens - Beautiful colonial-era gardens',
+                        'Mohatta Palace Gardens - Scenic gardens with historical significance',
+                        'DHA Golf Club - Beautifully maintained green spaces'
+                    ];
+                    break;
+                case 'food-spots':
+                    title = 'Best Food Spots in Karachi';
+                    description = 'Delicious culinary destinations that represent Karachi\'s diverse food culture:';
+                    items = [
+                        'Chicken Karahi at Burns Road - Famous for traditional karahi dishes',
+                        'Ghani\'s for Seekh Kebabs - Renowned for grilled delicacies',
+                        'Cream Bell for Ice Cream - Popular dessert destination',
+                        'Chopsticks for Chinese - Well-known Chinese restaurant',
+                        'Port Grand for Seafood - Waterfront dining with seafood specialties'
+                    ];
+                    break;
+                case 'historical-sites':
+                    title = 'Historical Sites in Karachi';
+                    description = 'Important landmarks that showcase Karachi\'s rich history:';
+                    items = [
+                        'Mazar-e-Quaid - Mausoleum of Pakistan\'s founder',
+                        'Frere Hall - Colonial-era building with historical significance',
+                        'Mohatta Palace - Historical palace with beautiful architecture',
+                        'Karachi Fort - Ancient fort with historical importance',
+                        'Empress Market - Historic market built during British era'
+                    ];
+                    break;
+                case 'beaches':
+                    title = 'Popular Beaches in Karachi';
+                    description = 'Coastal areas where residents and tourists enjoy sea views:';
+                    items = [
+                        'Clifton Beach - Most popular beach in Karachi',
+                        'Hawksbay Beach - Clean and well-maintained beach area',
+                        'Sandspit Beach - Scenic beach with dunes',
+                        'Maripur Beach - Less crowded beach option',
+                        'Cape Monment Beach - Scenic coastal area'
+                    ];
+                    break;
+                case 'parks':
+                    title = 'Parks & Recreation Areas in Karachi';
+                    description = 'Green spaces for recreation and relaxation:';
+                    items = [
+                        'Jinnah Park - Large park with recreational facilities',
+                        'Bagh Ibn-e-Qasim - Beautiful seaside park',
+                        'Churna Island - Popular for picnics and water sports',
+                        'Hill Park - Elevated park with scenic views',
+                        'Safari Park - Recreational area with animal exhibits'
+                    ];
+                    break;
+                default:
+                    title = 'Category Information';
+                    description = 'Information about ' + category.replace('-', ' ') + ' in Karachi.';
+                    items = ['Details about ' + category.replace('-', ' ') + ' coming soon.'];
+            }
+            
+            // Create and add the content
+            const titleElement = document.createElement('h3');
+            titleElement.textContent = title;
+            contentDiv.appendChild(titleElement);
+            
+            const descElement = document.createElement('p');
+            descElement.textContent = description;
+            contentDiv.appendChild(descElement);
+            
+            if (items && items.length > 0) {
+                const listElement = document.createElement('ul');
+                items.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = item;
+                    listElement.appendChild(listItem);
+                });
+                contentDiv.appendChild(listElement);
+            }
+        }
+        
+        // Search functionality (placeholder for now)
+        document.getElementById('karachiSearch').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                alert('Search functionality will be implemented later. You searched for: ' + this.value);
+            }
+        });
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

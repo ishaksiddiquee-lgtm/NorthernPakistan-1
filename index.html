@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northern Pakistan Tourism | Discover the Beauty of Hunza, Swat, Murree & Skardu</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2>Northern<span>Pakistan</span></h2>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#destinations" class="nav-link">Destinations</a>
+                    <a href="#my-country" class="nav-link">My Country</a>
+                    <a href="#activities" class="nav-link">Activities</a>
+                    <a href="#contact" class="nav-link btn-primary">Book Now</a>
+                </div>
+                <div class="search-bar">
+                    <form class="search-form" id="topSearchForm">
+                        <input type="search" placeholder="Search for a city..." required id="topSearchInput">
+                        <button type="submit" class="btn-primary">Search</button>
+                    </form>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <script>
+        document.getElementById('topSearchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const searchTerm = document.getElementById('topSearchInput').value.trim().toLowerCase();
+            
+            // Define mapping of search terms to city pages from the "Explore Our Country" section
+            const cityMap = {
+                'karachi': 'karachi.html',
+                'lahore': 'lahore.html',
+                'islamabad': 'islamabad.html',
+                'hyderabad': 'hyderabad.html',
+                'peshawar': 'peshawar.html',
+                'quetta': 'quetta.html',
+                'multan': 'multan.html',
+                'faisalabad': 'faisalabad.html',
+                'rawalpindi': 'rawalpindi.html',
+                'sialkot': 'sialkot.html',
+                'gujranwala': 'gujranwala.html',
+                'bahawalpur': 'bahawalpur.html',
+                'sukkur': 'sukkur.html',
+                'muzaffarabad': 'muzaffarabad.html',
+                'skardu': 'skardu.html',
+                'gilgit': 'gilgit.html',
+                'swat': 'swat.html',
+                'chitral': 'chitral.html',
+                'abbottabad': 'abbottabad.html',
+                'gwadar': 'gwadar.html',
+                'hub': 'hub.html',
+                'turbat': 'turbat.html',
+                'khuzdar': 'khuzdar.html',
+                'kohat': 'kohat.html',
+                'mardan': 'mardan.html',
+                'mirpur': 'mirpur.html',
+                'jhang': 'jhang.html',
+                'sahiwal': 'sahiwal.html',
+                'sargodha': 'sargodha.html',
+                'sheikhupura': 'sheikhupura.html',
+                'larkana': 'larkana.html',
+                'nawabshah': 'nawabshah.html',
+                'chiniot': 'chiniot.html',
+                'kasur': 'kasur.html',
+                'rahim yar khan': 'rahim-yar-khan.html',
+                'sadiqabad': 'sadiqabad.html',
+                'kalam': 'kalam.html'
+            };
+            
+            // Check if the search term matches a city from the "Explore Our Country" section
+            if (cityMap[searchTerm]) {
+                window.location.href = cityMap[searchTerm];
+            } else {
+                // If no exact match, show an alert
+                alert('City "' + searchTerm + '" not found. Please check the spelling or explore cities through the "My Country" > "Explore Our Country" section.');
+            }
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover the Majestic Beauty of Northern Pakistan</h1>
+            <p>Embark on a journey through pristine valleys, towering peaks, and vibrant cultures that define the breathtaking landscape of Northern Pakistan</p>
+            <div class="hero-btns">
+                <a href="#destinations" class="btn-primary">Explore Destinations</a>
+                <a href="#contact" class="btn-secondary">Plan Your Trip</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <h2>Featured Destinations</h2>
+            <p class="section-subtitle">Explore the most beautiful places in Pakistan</p>
+
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="image/201/Karakoram Mountains.jpg" alt="Karakoram Mountains" class="destination-img">
+                        <div class="overlay">
+                            <h3>Karakoram Mountains</h3>
+                            <div class="description-inside" style="display: none;">
+                                <p>Home to K2, world's second tallest peak</p>
+                                <p>Features stunning glacial systems</p>
+                                <p>Dramatic peaks and breathtaking views</p>
+                                <p>Popular destination for mountaineers</p>
+                                <p>Located at Pakistan-India-China junction</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="destination-description" style="display: none;">
+                        <p>Home to K2, the world's second tallest peak. Stunning glacial systems and dramatic peaks.</p>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="image/201/Hunza Valley.jpg" alt="Hunza Valley" class="destination-img">
+                        <div class="overlay">
+                            <h3>Hunza Valley</h3>
+                            <div class="description-inside" style="display: none;">
+                                <p>Breathtaking valley with towering peaks</p>
+                                <p>Famous for apricot orchards</p>
+                                <p>Traditional villages and ancient forts</p>
+                                <p>Associated with longevity</p>
+                                <p>Stunning mountain scenery</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="destination-description" style="display: none;">
+                        <p>Breathtaking valley with towering peaks, apricot orchards, and traditional villages.</p>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="image/201/Badshahi Mosque.jpg" alt="Badshahi Mosque" class="destination-img">
+                        <div class="overlay">
+                            <h3>Badshahi Mosque</h3>
+                            <div class="description-inside" style="display: none;">
+                                <p>Iconic 17th-century Mughal mosque</p>
+                                <p>Built by Emperor Aurangzeb in 1673</p>
+                                <p>Constructed with red sandstone</p>
+                                <p>Features white marble domes</p>
+                                <p>One of the world's largest mosques</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="destination-description" style="display: none;">
+                        <p>Iconic 17th-century Mughal mosque in Lahore with grand red sandstone architecture.</p>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="image/201/Mohatta Palace.jpg" alt="Mohatta Palace" class="destination-img">
+                        <div class="overlay">
+                            <h3>Mohatta Palace</h3>
+                            <div class="description-inside" style="display: none;">
+                                <p>Elegant 1927 palace in Karachi</p>
+                                <p>Features Indo-Saracenic architecture</p>
+                                <p>Blends Mughal, Rajput, and Gothic styles</p>
+                                <p>Now serves as a cultural museum</p>
+                                <p>Architectural gem of the region</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="destination-description" style="display: none;">
+                        <p>Elegant 1927 palace in Karachi featuring Indo-Saracenic architecture. Now a cultural museum.</p>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="image/201/Lahore Fort.jpg" alt="Lahore Fort" class="destination-img">
+                        <div class="overlay">
+                            <h3>Lahore Fort</h3>
+                            <div class="description-inside" style="display: none;">
+                                <p>UNESCO World Heritage site</p>
+                                <p>Features magnificent Mughal architecture</p>
+                                <p>Includes the famous Sheesh Mahal</p>
+                                <p>Also has Diwan-e-Khas hall</p>
+                                <p>Historic fort in Lahore</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="destination-description" style="display: none;">
+                        <p>UNESCO World Heritage site featuring magnificent Mughal architecture, including the Sheesh Mahal and Diwan-e-Khas.</p>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-img">
+                        <img src="image/201/Mohenjo-daro.jpg" alt="Mohenjo-daro" class="destination-img">
+                        <div class="overlay">
+                            <h3>Mohenjo-daro</h3>
+                            <div class="description-inside" style="display: none;">
+                                <p>Ancient Indus Valley Civilization site</p>
+                                <p>One of world's earliest urban settlements</p>
+                                <p>Features sophisticated drainage systems</p>
+                                <p>Historic archaeological wonder</p>
+                                <p>UNESCO World Heritage site</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="destination-description" style="display: none;">
+                        <p>Ancient Indus Valley Civilization site, one of the world's earliest urban settlements with sophisticated drainage systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Country Section -->
+    <section id="my-country" class="my-country">
+        <div class="container">
+            <h2>My Country - Pakistan</h2>
+            <p class="section-subtitle">Discover the beauty, culture, and diversity of Pakistan</p>
+
+            <div class="country-content">
+                <div class="left-section">
+                    <div class="description-section">
+                        <p>This website is dedicated to showcasing the breathtaking beauty of Pakistan, a land of diverse landscapes, rich culture, and warm hospitality. From the soaring peaks of the Karakoram and Himalayas to the pristine beaches of the Arabian Sea, Pakistan offers an incredible array of natural wonders.</p>
+
+                        <p>Our nation is a tapestry of cultures, traditions, and ethnicities, with over 70 languages spoken across its provinces. The people of Pakistan are known for their generosity and warmth, always ready to welcome guests with open arms. Pakistani cuisine is a delightful fusion of flavors, combining Central Asian, Middle Eastern, and Indian influences.</p>
+
+                        <p>From the ancient ruins of the Indus Valley Civilization to the magnificent Mughal architecture, Pakistan's heritage spans millennia. Our regions offer everything from the alpine beauty of Gilgit-Baltistan to the desert landscapes of Tharparkar, from the fertile plains of Punjab to the rugged terrain of Balochistan.</p>
+
+                        <div style="margin-top: 20px;">
+                            <button id="exploreBtn" class="btn-primary" style="padding: 15px 30px; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; display: inline-block; background-color: #2e8b57; color: white;">Explore Our Country</button>
+                        </div>
+
+                        <div id="citiesDropdown" class="cities-dropdown">
+                            <h3>Major Cities of Pakistan</h3>
+                            <div class="city-grid">
+                                <a href="karachi.html" class="city-btn">Karachi</a>
+                                <a href="lahore.html" class="city-btn">Lahore</a>
+                                <a href="islamabad.html" class="city-btn">Islamabad</a>
+                                <a href="hyderabad.html" class="city-btn">Hyderabad</a>
+                                <a href="peshawar.html" class="city-btn">Peshawar</a>
+                                <a href="quetta.html" class="city-btn">Quetta</a>
+                                <a href="multan.html" class="city-btn">Multan</a>
+                                <a href="faisalabad.html" class="city-btn">Faisalabad</a>
+                                <a href="rawalpindi.html" class="city-btn">Rawalpindi</a>
+                                <a href="sialkot.html" class="city-btn">Sialkot</a>
+                                <a href="gujranwala.html" class="city-btn">Gujranwala</a>
+                                <a href="bahawalpur.html" class="city-btn">Bahawalpur</a>
+                                <a href="sukkur.html" class="city-btn">Sukkur</a>
+                                <a href="muzaffarabad.html" class="city-btn">Muzaffarabad</a>
+                                <a href="gilgit.html" class="city-btn">Gilgit</a>
+                                <a href="skardu.html" class="city-btn">Skardu</a>
+                                <a href="sahiwal.html" class="city-btn">Sahiwal</a>
+                                <a href="sargodha.html" class="city-btn">Sargodha</a>
+                                <a href="jhang.html" class="city-btn">Jhang</a>
+                                <a href="sheikhupura.html" class="city-btn">Sheikhupura</a>
+                                <a href="larkana.html" class="city-btn">Larkana</a>
+                                <a href="nawabshah.html" class="city-btn">Nawabshah</a>
+                                <a href="chiniot.html" class="city-btn">Chiniot</a>
+                                <a href="kasur.html" class="city-btn">Kasur</a>
+                                <a href="rahim-yar-khan.html" class="city-btn">Rahim Yar Khan</a>
+                                <a href="sadiqabad.html" class="city-btn">Sadiqabad</a>
+                                <a href="mirpur.html" class="city-btn">Mirpur</a>
+                                <a href="abbottabad.html" class="city-btn">Abbottabad</a>
+                                <a href="mardan.html" class="city-btn">Mardan</a>
+                                <a href="kohat.html" class="city-btn">Kohat</a>
+                                <a href="swat.html" class="city-btn">Swat</a>
+                                <a href="chitral.html" class="city-btn">Chitral</a>
+                                <a href="khuzdar.html" class="city-btn">Khuzdar</a>
+                                <a href="turbat.html" class="city-btn">Turbat</a>
+                                <a href="hub.html" class="city-btn">Hub</a>
+                                <a href="gwadar.html" class="city-btn">Gwadar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-section">
+                    <div class="image-frame">
+                        <img src="image/My Country - Pakistan/123.jpg" alt="Beautiful Pakistan Landscape" class="frame-image">
+                        <p>Pakistan's Natural Beauty</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Toggle cities dropdown
+        document.getElementById('exploreBtn').addEventListener('click', function() {
+            const dropdown = document.getElementById('citiesDropdown');
+            if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                dropdown.style.display = 'block';
+                this.textContent = 'Hide Cities';
+            } else {
+                dropdown.style.display = 'none';
+                this.textContent = 'Explore Our Country';
+            }
+        });
+    </script>
+
+    <!-- Activities Section -->
+    <section id="activities" class="activities">
+        <div class="container">
+            <h2>Unforgettable Experiences</h2>
+            <p class="section-subtitle">Adventure, culture, and relaxation await you</p>
+
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <i class="fas fa-mountain"></i>
+                    <h3>Trekking & Hiking</h3>
+                    <p>Explore world-class trekking routes through pristine landscapes</p>
+                </div>
+
+                <div class="activity-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Photography Tours</h3>
+                    <p>Capture the majestic beauty of peaks, lakes, and valleys</p>
+                </div>
+
+                <div class="activity-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Cultural Stays</h3>
+                    <p>Experience local hospitality and traditions</p>
+                </div>
+
+                <div class="activity-card">
+                    <i class="fas fa-water"></i>
+                    <h3>Lake Excursions</h3>
+                    <p>Visit pristine alpine lakes like Saif-ul-Malook and Shangrila</p>
+                </div>
+
+                <div class="activity-card">
+                    <i class="fas fa-snowflake"></i>
+                    <h3>Winter Sports</h3>
+                    <p>Skiing and snowboarding in the snowy mountains</p>
+                </div>
+
+                <div class="activity-card">
+                    <i class="fas fa-hiking"></i>
+                    <h3>Adventure Sports</h3>
+                    <p>Paragliding, rock climbing, and mountaineering</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NorthernPakistan</h3>
+                    <p>Embark on an unforgettable journey through Pakistan's most breathtaking landscapes. Experience the majestic beauty of the Karakoram and Himalayan ranges, explore ancient civilizations, and immerse yourself in the rich cultural heritage of our diverse regions. From the northern valleys of Hunza and Skardu to the vibrant cities of Lahore and Karachi, discover the unparalleled beauty that defines Pakistan.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Get In Touch</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Pak-Colony, Karachi</li>
+                        <li><i class="fas fa-phone"></i> +92 3062025427</li>
+                        <li><i class="fas fa-envelope"></i> ishaksiddiquee@email.com</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Popular Destinations</h4>
+                    <ul>
+                        <li><a href="karachi.html">Karachi</a></li>
+                        <li><a href="lahore.html">Lahore</a></li>
+                        <li><a href="islamabad.html">Islamabad</a></li>
+                        <li><a href="peshawar.html">Peshawar</a></li>
+                        <li><a href="quetta.html">Quetta</a></li>
+                        <li><a href="multan.html">Multan</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="admin-login.html">Admin Panel</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 NorthernPakistan Tourism. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="image-handler.js"></script>
+</body>
+</html>

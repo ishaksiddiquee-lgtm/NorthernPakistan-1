@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mazar-e-Quaid - Karachi | Quaid-e-Azam's Mausoleum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/1920x1080/?mazar-e-quaid,karachi') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .intro h2 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .description-section {
+            background: #f8f9fa;
+            padding: 50px 30px;
+            border-radius: 10px;
+            margin: 50px 0;
+        }
+
+        .description-section h2 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .description-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .description-content h3 {
+            color: #2c3e50;
+            margin: 25px 0 15px 0;
+            font-size: 1.8em;
+        }
+
+        .description-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .facts-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .fact-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .fact-card h4 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: #1a252f;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .intro h2,
+            .description-section h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Mazar-e-Quaid</h1>
+        <p>The Sacred Mausoleum of Quaid-e-Azam Muhammad Ali Jinnah</p>
+    </div>
+
+    <div class="container">
+        <section class="intro">
+            <h2>Final Resting Place of Pakistan's Founder</h2>
+            <p>Mazar-e-Quaid, the tomb of Muhammad Ali Jinnah, is one of the most significant landmarks in Karachi and a symbol of Pakistan's independence. This sacred site attracts millions of visitors annually who come to pay their respects to the Father of the Nation.</p>
+        </section>
+
+        <section class="gallery">
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/600x800/?mazar-e-quaid-exterior" alt="Mazar-e-Quaid Exterior" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/600x800/?mazar-e-quaid-interior" alt="Mazar-e-Quaid Interior" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="https://source.unsplash.com/600x800/?mazar-e-quaid-marble" alt="Mazar-e-Quaid Marble Work" class="gallery-img">
+            </div>
+        </section>
+
+        <section class="description-section">
+            <h2>History and Significance of Mazar-e-Quaid</h2>
+            <div class="description-content">
+                <p>Mazar-e-Quaid, meaning "Tomb of the Great Leader," is the final resting place of Muhammad Ali Jinnah, the founder of Pakistan and the leader of the All-India Muslim League. The mausoleum is located in the heart of Karachi, Pakistan's largest city and former capital.</p>
+
+                <h3>Construction and Design</h3>
+                <p>The construction of Mazar-e-Quaid began after the death of Muhammad Ali Jinnah on September 11, 1948. The mausoleum was designed by Yahya Merchant, a prominent architect of the time. The structure is built of white marble and features elements of Mughal and modern architecture.</p>
+
+                <p>The building consists of a large, cube-shaped building with a large dome surmounted by a smaller dome. Four minarets stand at each corner of the building, representing the four provinces of Pakistan. The structure is surrounded by beautiful gardens and fountains, creating a serene and respectful environment.</p>
+
+                <h3>Historical Context</h3>
+                <p>After Pakistan gained independence on August 14, 1947, Muhammad Ali Jinnah became the first Governor-General of the newly formed nation. However, his health deteriorated rapidly due to tuberculosis, and he passed away on September 11, 1948, just over a year after Pakistan's independence.</p>
+
+                <p>Jinnah's funeral was held on September 12, 1948, and he was buried in the now-famous site in Karachi. Initially, a temporary structure was built to house his grave, but plans for a permanent mausoleum began shortly after.</p>
+
+                <h3>Architectural Features</h3>
+                <p>The mausoleum is constructed entirely of white marble, symbolizing peace and purity. The main structure sits on a raised platform and features a large central chamber where Jinnah's sarcophagus rests. The sarcophagi of Jinnah's sister Fatima Jinnah, Liaquat Ali Khan (Pakistan's first Prime Minister), and his wife Ra'ana Liaquat Ali Khan are also housed within the mausoleum.</p>
+
+                <p>The interior of the mausoleum is adorned with intricate calligraphy featuring verses from the Quran and quotes from Jinnah's speeches. The ceiling features beautiful geometric patterns typical of Islamic art. The white marble exterior gleams brilliantly in the sunlight, making it visible from great distances.</p>
+
+                <h3>Completion Date</h3>
+                <p>Although the initial burial took place in 1948, the construction of the permanent mausoleum was completed in 1971, taking over two decades to finalize. The project faced delays due to funding issues and disagreements over the design. The final design by Yahya Merchant was selected after several proposals were considered.</p>
+
+                <h3>Symbolism and Importance</h3>
+                <p>Mazar-e-Quaid stands as a symbol of Pakistan's independence and the vision of its founder. The mausoleum represents the ideals of tolerance, justice, and democracy that Jinnah championed throughout his life. It serves as a constant reminder of the sacrifices made to create Pakistan as a separate homeland for Muslims of the Indian subcontinent.</p>
+
+                <p>The site is maintained by the Government of Pakistan and is considered a national monument. Special ceremonies are held here on important national occasions, particularly on December 25 (Jinnah's birthday) and September 11 (the anniversary of his death).</p>
+
+                <h3>Visiting Mazar-e-Quaid</h3>
+                <p>The mausoleum is open to visitors throughout the year, though it is especially crowded during national holidays and the anniversary of Jinnah's death. Visitors are required to dress modestly and remove their shoes before entering the prayer areas. Photography is allowed in the gardens but restricted in the main mausoleum out of respect.</p>
+
+                <p>The surrounding area includes the Quaid-e-Azam House Museum, where Jinnah lived during his time in Karachi, and the Sindh Assembly building. The entire complex serves as a testament to the founding principles of Pakistan and the legacy of its creator.</p>
+            </div>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="javascript:history.back()" class="btn-back">← Back to Karachi Exploration</a>
+        </div>
+    </div>
+</body>
+</html>

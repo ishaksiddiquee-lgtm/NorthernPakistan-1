@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cities Visibility</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .btn-primary {
+            padding: 15px 30px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .cities-dropdown {
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: none; /* Hidden by default */
+        }
+        
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .city-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #2e8b57;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Cities Visibility Feature</h1>
+    
+    <button id="exploreBtn" class="btn-primary">Explore Our Country</button>
+    
+    <div id="citiesDropdown" class="cities-dropdown">
+        <h3>Major Cities of Pakistan</h3>
+        <div class="city-grid">
+            <a href="#" class="city-btn">Karachi</a>
+            <a href="#" class="city-btn">Lahore</a>
+            <a href="#" class="city-btn">Islamabad</a>
+            <a href="#" class="city-btn">Hyderabad</a>
+            <a href="#" class="city-btn">Peshawar</a>
+            <a href="#" class="city-btn">Quetta</a>
+        </div>
+    </div>
+    
+    <script>
+        // Toggle cities dropdown
+        document.getElementById('exploreBtn').addEventListener('click', function() {
+            const dropdown = document.getElementById('citiesDropdown');
+            if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                dropdown.style.display = 'block';
+                this.textContent = 'Hide Cities';
+            } else {
+                dropdown.style.display = 'none';
+                this.textContent = 'Explore Our Country';
+            }
+        });
+    </script>
+    
+    <p>Initially, the city buttons should be hidden. Click the button to reveal them.</p>
+</body>
+</html>
